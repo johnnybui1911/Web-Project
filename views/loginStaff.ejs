@@ -1,0 +1,44 @@
+<html>
+
+      <head>
+        <title>CSCI214Project</title>
+        <script
+  src="https://code.jquery.com/jquery-1.12.3.min.js"
+  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+  crossorigin="anonymous"></script>
+
+        <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+        <script src="/assets/todo-list.js"></script>
+      </head>
+
+      <body>
+        <div style="margin: auto; text-align: center;">
+        <img src="/assets/W2.jpg" alt="uow" height="80px">
+        </div>
+        <div class="head" style="text-align: center; font-weight: bold; font-size: 20px;">
+            LOGIN AS STAFF
+        </div>
+      <table style="font-weight:bold;" class="card">
+        <tr>
+          <td>
+            <form id="formLogin" method="POST">
+            <br>
+            Username:<br>
+            <input name="username" id="username" type="text"/>
+            <br>
+            <br>
+            Password:<br>
+            <input name="password" id="password" type="password"/>
+            <br>
+            <br>
+            <button type="submit" class="loginBut" style="cursor: pointer; margin: 10px 0px; width: 60%; background-color: rgba(203, 54, 54, 0.71); border: 2px groove rgba(203, 54, 54, 0.71); font-size: 18px;">Login</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <% include partials/backToIndex.ejs %>
+    </body>
+
+    </html>

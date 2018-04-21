@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title>CSCI214Project</title>
+  <script
+  src="https://code.jquery.com/jquery-1.12.3.min.js"
+  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+  crossorigin="anonymous"></script>
+
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+  <script src="/assets/todo-list.js"></script>
+</head>
+
+<body>
+  <div class="head" style="text-align: left; font-weight: bold; font-size: 20px;">
+    DELETE BOOKING
+  </div>
+  <table>
+    <tr>
+      <td class="event">
+        EVENT#
+      </td>
+      <td class="event" width="75%">
+        EVENT NAME
+      </td>
+    </tr>
+    <% for(var i=0; i< todos.length; i++){ %>
+    <tr>
+      <td class="selectE">
+        <p4 style="cursor: pointer;"><%= todos[i].num %></p4>
+      </td>
+      <td class="selectE">
+          <%= todos[i].name %>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  <br>
+  <% include partials/backToStudent.ejs %>
+</body>
+
+</html>

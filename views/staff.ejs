@@ -1,0 +1,77 @@
+<html>
+
+    <head>
+      <title>CSCI214Project</title>
+      <script
+src="https://code.jquery.com/jquery-1.12.3.min.js"
+integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+crossorigin="anonymous"></script>
+
+      <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+      <script src="/assets/todo-list.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
+    </head>
+
+    <body>
+      <div style="margin: auto; text-align: center;">
+      <img src="/assets/W2.jpg" alt="uow" height="80px">
+      </div>
+      <div class="head">
+            <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
+              <tr>
+                <td>
+                  STAFF &nbsp;
+                  <span style=" font-size: 16px; font-style: italic;">
+                  <a href="/staff" style="color: rgba(0,0,0,.9)">Home</a> &nbsp;
+                  <a href="/createEvent" style="color: rgba(0,0,0,.3)">Create Event</a> &nbsp;
+                  <a href="/viewEvent" style="color: rgba(0,0,0,.3)">View Event</a> &nbsp;</span>
+                </td>
+                <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
+                  <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
+                  &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
+                  </td>
+              </tr>
+            </table> <div></div>
+        </div>
+      <!--<table class="card">
+        <tr>
+          <td class="box">
+            <a href="/createEvent">CREATE NEW EVENT</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="box">
+            <a href="/viewEvent">VIEW CURRENT EVENTS</a>
+          </td>
+        </tr>
+      </table>-->
+
+      <table class="card">
+        <tr>
+          <td style="vertical-align: middle; padding:40px 20px; text-align:center;">
+            <div id="bigbox">
+
+              <div class="box">
+                <a href="/createEvent">CREATE NEW EVENT</a>
+              </div>
+              <br>
+              <div class="box">
+                <a href="/viewEvent">VIEW CURRENT EVENTS</a>
+              </div>
+
+            </div>
+          </td>
+        </tr>
+      </table>
+
+
+    </body>
+    <br>
+    <div style="width: 55%; text-align: center;"><% include partials/backToIndex.ejs %></div>
+
+  </html>

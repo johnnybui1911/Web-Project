@@ -1,0 +1,326 @@
+body {
+  background-color: white;
+  font-family: Forum;
+  color: black;
+}
+
+.navbar {
+  background-color: rgba(203, 54, 54, 0.71) !important;
+  font-weight: bold;
+}
+
+.navbar-toggler {
+  border-color: white !important;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.marginSet {
+  margin-left: 400px;
+
+}
+
+
+.marginSet2 {
+  margin-left: 150px;
+  color: rgba(203, 54, 54, 0.71);
+  font-size: 45px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 500px;
+  border-radius: 5px;
+  margin: 20px auto;
+  text-align: center;
+  border: 4px groove rgba(203, 54, 54, 0.71);
+}
+
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 60%;
+  text-align: center;
+  border: 4px groove rgba(203, 54, 54, 0.71);
+}
+
+.hieu {
+    display:flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin: 0px 80px;
+}
+
+.hieu > div {
+  width: 50%;
+  text-align: center;
+
+}
+
+.clickEventNum:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+p{
+  cursor: pointer;
+}
+
+
+
+p8:hover{
+    text-decoration: line-through;
+    background: rgba(203, 54, 54, 0.71);
+    color: black;
+}
+
+p4{
+    box-sizing: border-box;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+p4:hover{
+    text-decoration: line-through;
+    background: rgba(203, 54, 54, 0.71);
+}
+
+.head {
+  background: rgba(203, 54, 54, 0.71);
+  padding: 10px 10px;
+
+}
+
+.head div{
+  text-align: right;
+}
+.event {
+  background-color: rgba(203, 54, 54, 0.71);
+  border: 2px groove rgba(203, 54, 54, 0.71);
+  font-weight: bold;
+}
+
+t {
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 50%;
+  text-align: center;
+  border: 4px groove rgba(203, 54, 54, 0.71);
+}
+
+.no {
+  width: 100%;
+  border: 0px groove rgba(203, 54, 54, 0.71);
+  margin: 0px 0px;
+}
+
+.selectE {
+  border: 2px groove rgba(203, 54, 54, 0.71);
+  padding: 4px;
+  text-align: left;
+}
+
+.box {
+  border-radius: 5px;
+  font-weight: bold;
+  color: black;
+  border: 2px groove rgba(203, 54, 54, 0.71);
+  text-align: center;
+  padding: 10px 10px;
+  background-color: rgba(203, 54, 54, 0.71);
+}
+
+.picker__table {
+  border: none;
+}
+
+.picker__table, .picker__month {
+  color: rgba(203, 54, 54, 0.71);
+}
+
+input {
+border-radius: 10px;
+padding: 5px 5px;
+text-align: left;
+width: 200px;
+border: 2px groove rgba(203, 54, 54, 0.71);
+}
+
+textarea {
+  border-radius: 10px;
+  padding: 5px 5px;
+  width: 300px;
+  border: 2px groove rgba(203, 54, 54, 0.71);
+}
+
+select {
+border-radius: 10px;
+padding: 5px 5px;
+text-align: center;
+width: 50%;
+border: 2px groove rgba(203, 54, 54, 0.71);
+}
+
+.SearchTable {
+padding: 100px 30px;
+}
+
+button {
+border-radius: 10px;
+padding: 5px 5px;
+text-align: center;
+width: 20%;
+font-family: Forum;
+font-weight: bold;
+}
+
+a {
+color: black;
+text-decoration: none;
+}
+
+a:hover {
+
+  color: white;
+}
+
+.material-icons {
+  padding-right: 4px;
+}
+
+.styleButton:hover, .butt:hover, .buttDel:hover, .buttCancel:hover, .buttBooking:hover, .buttCode:hover, .buttCancel2:hover {
+  color: rgba(203, 54, 54, 0.71);
+
+}
+
+.deleteButton:hover {
+  color: rgba(203, 54, 54, 0.71);
+
+}
+
+
+.buttBooking, .buttCancel, .buttCancel2 {
+  cursor: pointer;
+  margin: 5px 20px;
+  width: 100px;
+  background-color: white;
+  border: 4px double rgba(203, 54, 54, 0.71);
+  font-size: 18px;
+}
+
+
+/*//////////////////////////tooltip*/
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    font-size: small;
+    background-color: rgba(203, 54, 54, 0.71);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 180%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(203, 54, 54, 0.71) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+.loginBut:hover{
+
+  color: white;
+}
+
+
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    width: 40px;
+    background-color: rgba(203, 54, 54, 0.71);
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    text-align: center;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 200%;
+    margin-left: -60px;
+}
+
+.tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: rgba(203, 54, 54, 0.71);
+    border-color: rgba(203, 54, 54, 0.71);
+    font-weight: bold;
+}
+
+.list-group{
+
+    border-radius: 5px;
+}
+
+
+.row {
+  margin: 0px 150px;
+}
+
+.list-group-item {
+  padding: .45rem 1.25rem;
+}
+
+h7 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card-header {
+  background-color: rgba(203, 54, 54, 0.71);
+  font-weight: bold;
+}
+
+
+.form-control:focus {
+  border-color: rgba(203, 54, 54, 0.71) !important;
+  box-shadow: 0 0 0 0.1rem rgba(203, 54, 54, 0.45);
+}
+
+.input-group-text {
+
+}

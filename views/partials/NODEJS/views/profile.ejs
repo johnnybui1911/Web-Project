@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <style>
+    h2{font-size: 48px; text-align: center; color: white;}
+    li{text-align: center;}
+  </style>
+  <body>
+    <% include partials/nav.ejs %>
+
+    <h1><%= person %></h1> <!-- output data use equal tag -->
+    <p><%= data.age %></p>
+    <p><%= data.job %></p>
+
+    <h2>Hobbies</h2>
+    <ul>
+      <% data.hobbies.forEach(function(item){ %> <!-- output JS just need %-->
+           <li> <%= item %> </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

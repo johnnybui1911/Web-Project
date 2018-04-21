@@ -1,0 +1,144 @@
+<html>
+
+      <head>
+        <title>CSCI214Project</title>
+        <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+
+      </head>
+
+      <body>
+        <div style="margin: auto; text-align: center;">
+        <img src="/assets/W2.jpg" alt="uow" height="80px">
+        </div>
+          <div class="head">
+                <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
+                  <tr>
+                    <td>
+                      STUDENT &nbsp;
+                      <span style=" font-size: 16px; font-style: italic;">
+                      <a href="/student" style="color: rgba(0,0,0,.3)">Home</a> &nbsp;
+                      <a href="/viewEventStudent" style="color: rgba(0,0,0,.3)">View Event</a> &nbsp;
+                      <a href="/viewBooking" style="color: rgba(0,0,0,.9)">View Booking</a> &nbsp;</span>
+                    </td>
+                    <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
+                      <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
+                      &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
+                      </td>
+                  </tr>
+                </table> <div></div>
+            </div>
+            <br>
+            <h7 class="marginSet2">Checkout</h7>
+            <div class="row">
+              <div class="col-md-4 order-md-2 mb-4">
+                <br>
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Booking Information</span>
+                </h4>
+                <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0"><%= todos.name %></h6>
+                      <small class="text-muted">Event Name</small>
+                    </div>
+                    <span class="text-muted">$12</span>
+                  </li>
+
+                  <div id="more">
+
+                  </div>
+
+                  <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-success">
+                      <h6 class="my-0">Promo code</h6>
+                      <small>Discount</small>
+                    </div>
+                    <span class="text-success">-0$</span>
+                  </li> -->
+
+
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$<span id="codeC"><%= todos.price %></span></strong>
+                  </li>
+                </ul>
+
+                <form class="checkCode">
+                  <div class="input-group">
+                    <input type="text" id="codeInput" name="<%= todos.num %>" style="padding: 5px 15px;" placeholder="Promo code">
+                    <div class="input-group-append">
+                      <button type="submit" class="buttCode" style="cursor: pointer; margin: 5px 10px;width: 100px;background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Redeem</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="col-md-8 order-md-1">
+                <br>
+
+                <h4 class="mb-3" style="padding-left: 150;">Payment</h4>
+                <form class="payment" method="POST">
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-name">Name on card</label>
+                      <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                      <small class="text-muted">Full name as displayed on card</small>
+                      <div class="invalid-feedback">
+                        Name on card is required
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-number">Credit card number</label>
+                      <input type="text" class="form-control" id="cc-number" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$" pattern="^.+$" placeholder="" required>
+                      <div class="invalid-feedback">
+                        Credit card number is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 mb-3">
+                      <label for="cc-expiration">Expiration</label>
+                      <input type="text" class="form-control" id="cc-expiration" pattern="^(0[1-9]|1[0-2])\/(1[8-9]|2[0-7])$" placeholder="" required>
+                      <div class="invalid-feedback">
+                        Expiration date required
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="cc-expiration">CVV</label>
+                      <input type="text" class="form-control" id="cc-cvv"  pattern="^[0-9]{3}$" placeholder="" required>
+                      <div class="invalid-feedback">
+                        Security code required
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="mb-4">
+                  <div class="col-md-12 mb-3" style="text-align:center;">
+                    <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px; width: 60%; background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Book Event</button>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+
+        <br>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+        src="https://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/assets/todo-list.js"></script>
+      </body>
+
+    </html>

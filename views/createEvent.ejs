@@ -1,0 +1,162 @@
+<html>
+
+<head>
+  <title>CSCI214Project</title>
+  <script
+  src="https://code.jquery.com/jquery-1.12.3.min.js"
+  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+  crossorigin="anonymous"></script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.time.css" />
+
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+  <div style="margin: auto; text-align: center;">
+    <img src="/assets/W2.jpg" alt="uow" height="80px">
+  </div>
+  <div class="head">
+    <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
+      <tr>
+        <td>
+          STAFF &nbsp;
+          <span style=" font-size: 16px; font-style: italic;">
+            <a href="/staff" style="color: rgba(0,0,0,.3)">Home</a> &nbsp;
+            <a href="/createEvent" style="color: rgba(0,0,0,.9)">Create Event</a> &nbsp;
+            <a href="/viewEvent" style="color: rgba(0,0,0,.3)">View Event</a> &nbsp;</span>
+          </td>
+          <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
+            <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
+            &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
+          </td>
+        </tr>
+      </table> <div></div>
+    </div>
+
+    <br>
+
+    <div class="background">
+      <h7 class="marginSet2">Create New Event</h7>
+      <br>
+
+      <div class="marginSet">
+        <form id="formCreate">
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Event name</label>
+              <input type="text" class="form-control" id="name" name="name"  placeholder="Event name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-8 mb-3">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Event Description</label>
+                <textarea class="form-control" id="des" name="des" placeholder="Description"></textarea>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault03">Date</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                </div>
+                <input style="background-color: white;" type="text" class="form-control" id="date" name="date" placeholder="Date" required>
+              </div>
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationDefault04">Start Time</label>
+              <input type="text" class="form-control" id="start" name="start" pattern="^[0-9]{2}:[0-9]{2}$" title="Input should have the format hh:mm !" placeholder="Start" required>
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationDefault04">End Time</label>
+              <input type="text" class="form-control" id="end" name="end" pattern="^[0-9]{2}:[0-9]{2}$" title="Input should have the format hh:mm !" placeholder="End" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+
+              <label for="validationDefault03">Capcity</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-male"></i></div>
+                </div>
+                <input type="number" class="form-control" id="max" name="max" placeholder="Capacity" required>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault04">Address</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault04">Ticket Price</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-dollar-sign"></i></div>
+                </div>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Price" required>
+              </div>
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationDefault04">Promo Code</label>
+              <input type="text" class="form-control" id="code" name="code" placeholder="Promo Code">
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationDefault04">Discount</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-percent"></i></div>
+                </div>
+                <input type="number" class="form-control" id="percent" name="percent" placeholder="Percentage" >
+              </div>
+            </div>
+          </div>
+          <div class="ce" style="text-align: center; margin-right: 400px;">
+            <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px;width: 200px;background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Add Event</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <br>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.3.min.js"
+    integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/assets/create.js"></script>
+  </body>
+
+  </html>

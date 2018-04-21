@@ -1,0 +1,119 @@
+<html>
+
+<head>
+  <title>CSCI214Project</title>
+  <script
+  src="https://code.jquery.com/jquery-1.12.3.min.js"
+  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+  crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+  <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div style="margin: auto; text-align: center;">
+    <img src="/assets/W2.jpg" alt="uow" height="80px">
+  </div>
+  <div class="head">
+    <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
+      <tr>
+        <td>
+          STUDENT &nbsp;
+          <span style=" font-size: 16px; font-style: italic;">
+            <a href="/student" style="color: rgba(0,0,0,.3)">Home</a> &nbsp;
+            <a href="/viewEventStudent" style="color: rgba(0,0,0,.9)">View Event</a> &nbsp;
+            <a href="/viewBooking" style="color: rgba(0,0,0,.3)">View Booking</a> &nbsp;</span>
+          </td>
+          <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
+            <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
+            &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
+          </td>
+        </tr>
+      </table> <div></div>
+    </div>
+    <br>
+    <h7 class="marginSet2">View Current Event</h7>
+    <br>
+    <% if(todos.length == 0) {%>
+      <div style="margin-left: 200px; font-size:small; color: #6c757d">
+        <small class="text-muted">- No upcomming events -</small>
+      </div>
+      <% } %>
+
+      <div class="row">
+        <% for(var i=0; i< todos.length; i++){ %>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-header" style="color: white;">
+                <%= todos[i].name %>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="border:none; text-align:left;">
+                  <li class="list-group-item" style="height: 50px; vertical-align: top;"><%= todos[i].des %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
+                  <li class="list-group-item" style="text-align: center;">
+                    <% if(todos[i].check == true) {%>
+                      <button class="buttCancel2" type="button" name="<%= todos[i].num %>">Cancel</button>
+                      <% }else{ %>
+
+                        <% if(todos[i].max == 0) {%>
+                          <button class="buttBooking" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                        <% }else{ %>
+                          <button class="buttBooking" type="button" name="<%= todos[i].num %>">Book</button>
+                        <% } %>
+
+                      <% } %>
+                    <!-- <button class="buttBooking" type="button" name="<%= todos[i].num %>" >Book</button> -->
+
+                  </li>
+
+                </ul>
+              </div>
+
+                  <% if(todos[i].max == 0) {%>
+                    <div class="alert alert-danger" role="alert">
+                      Full
+                    </div>
+                  <% }else{ %>
+                    <% if(todos[i].check == true) {%>
+                      <div class="alert alert-secondary" role="alert">
+                        Booked
+                      </div>
+                    <% }else{ %>
+                      <div class="alert alert-success" role="alert">
+                        Available
+                      </div>
+                    <% } %>
+                  <% } %>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+        src="https://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/assets/todo-list.js"></script>
+      </body>
+
+      </html>
