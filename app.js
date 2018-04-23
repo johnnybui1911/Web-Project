@@ -1,3 +1,4 @@
+var compression = require('compression');
 var express = require('express');
 var staffController = require('./controllers/staffController');
 var studentController = require('./controllers/studentController');
@@ -14,6 +15,7 @@ var app = express();
 app.set('view engine', 'ejs');
 
 //static file lile css, jquery, or png
+app.use(compression());
 app.use(express.static('./public'));
 app.use(session({secret: "Shh, its a secret!"}));
 
