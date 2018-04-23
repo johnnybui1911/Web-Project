@@ -2,26 +2,49 @@
 
       <head>
         <title>CSCI214Project</title>
-        <script
-  src="https://code.jquery.com/jquery-1.12.3.min.js"
-  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
-  crossorigin="anonymous"></script>
+          <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
-        <script src="/assets/todo-list.js"></script>
       </head>
 
       <body>
+
+
         <div style="margin: auto; text-align: center;">
         <img src="/assets/W2.jpg" alt="uow" height="80px">
         </div>
         <div class="head" style="text-align: center; font-weight: bold; font-size: 20px;">
             LOGIN AS STAFF
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Incorrect username or password
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       <table style="font-weight:bold;" class="card">
         <tr>
-          <td>
+          <td style="padding: 0px 150px;">
             <form id="formLogin" method="POST">
             <br>
             Username:<br>
@@ -38,7 +61,15 @@
         </tr>
       </table>
       <br>
-      <% include partials/backToIndex.ejs %>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script
+      src="https://code.jquery.com/jquery-1.12.3.min.js"
+      integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+      crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="/assets/todo-list.js"></script>
     </body>
 
     </html>

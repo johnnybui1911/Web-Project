@@ -49,7 +49,7 @@
                       <h6 class="my-0"><%= todos.name %></h6>
                       <small class="text-muted">Event Name</small>
                     </div>
-                    <span class="text-muted">$12</span>
+                    <span class="text-muted">$<%= todos.price %></span>
                   </li>
 
                   <div id="more">
@@ -65,17 +65,17 @@
                   </li> -->
 
 
-                  <li class="list-group-item d-flex justify-content-between">
+                  <li class="list-group-item d-flex justify-content-between" style="color: rgba(203, 54, 54, 0.71);">
                     <span>Total (USD)</span>
                     <strong>$<span id="codeC"><%= todos.price %></span></strong>
                   </li>
                 </ul>
 
-                <form class="checkCode">
+                <form class="checkCode" id="checkRedeem">
                   <div class="input-group">
                     <input type="text" id="codeInput" name="<%= todos.num %>" style="padding: 5px 15px;" placeholder="Promo code">
                     <div class="input-group-append">
-                      <button type="submit" class="buttCode" style="cursor: pointer; margin: 5px 10px;width: 100px;background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Redeem</button>
+                      <button type="submit" class="buttCode" >Redeem</button>
                     </div>
                   </div>
                 </form>
@@ -122,7 +122,7 @@
                   </div>
                   <hr class="mb-4">
                   <div class="col-md-12 mb-3" style="text-align:center;">
-                    <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px; width: 60%; background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Book Event</button>
+                    <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px; width: 60%; font-size: 18px;">Book Event</button>
 
                   </div>
                 </form>
@@ -138,7 +138,7 @@
         crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="/assets/todo-list.js"></script>
+        <script src="/assets/payment.js"></script>
       </body>
 
     </html>

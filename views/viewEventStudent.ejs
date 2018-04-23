@@ -41,29 +41,33 @@
       </table> <div></div>
     </div>
     <br>
-    <h7 class="marginSet2">View Current Event</h7>
+
+    
+
+    <h7 class="marginSet2">Upcoming Events</h7>
     <br>
     <% if(todos.length == 0) {%>
       <div style="margin-left: 200px; font-size:small; color: #6c757d">
-        <small class="text-muted">- No upcomming events -</small>
+        <small class="text-muted">- No upcoming events -</small>
       </div>
       <% } %>
-
+      <br>
       <div class="row">
         <% for(var i=0; i< todos.length; i++){ %>
-          <div class="col-sm-6">
+          <div class="col-md-6 mb-3">
             <div class="card">
               <div class="card-header" style="color: white;">
                 <%= todos[i].name %>
               </div>
               <div class="card-body">
                 <ul class="list-group" style="border:none; text-align:left;">
-                  <li class="list-group-item" style="height: 50px; vertical-align: top;"><%= todos[i].des %></li>
+                  <li class="list-group-item" style="height: 100px; vertical-align: top;"><%= todos[i].des %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
+
                   <li class="list-group-item" style="text-align: center;">
                     <% if(todos[i].check == true) {%>
                       <button class="buttCancel2" type="button" name="<%= todos[i].num %>">Cancel</button>

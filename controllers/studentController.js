@@ -125,7 +125,18 @@ module.exports = function(app){
               }
             }
           }
-          res.render('viewEventStudent', {todos: arrayCheck, user: req.session.user});
+
+          var array2=[];
+          var d = new Date();
+          for(var i=0; i<arrayCheck.length; i++)
+          {
+            if(arrayCheck[i].date>=d)
+            {
+              array2.push(arrayCheck[i]);
+            }
+          }
+
+          res.render('viewEventStudent', {todos: array2, user: req.session.user});
         });
       });
     }

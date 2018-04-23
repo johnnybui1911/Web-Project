@@ -40,49 +40,85 @@
               </table> <div></div>
           </div>
 
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Not creator of this event
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <br>
           <h7 class="marginSet2">View Current Event</h7>
+          <br>
+          <form id="show" method="get" action="./viewEvent">
+            <select id="showEvent" name="showE" class="form-control form-control-sm" style="width: 180px; margin: 0px 170px;">
+              <option value="all">All events</option>
+              <% if(selectVal == "upcomming") {%>
+                <option value="upcomming" selected>Upcoming events</option>
+              <% }else{ %>
+                <option value="upcomming">Upcoming events</option>
+              <% } %>
+              <% if(selectVal == "past") {%>
+                <option value="past" selected>Past events</option>
+              <% }else{ %>
+                <option value="past">Past events</option>
+              <% } %>
+            </select>
+          </form>
+
+
           <br>
           <% if(todos.length == 0) {%>
               <div style="margin-left: 200px; font-size:small; color: #6c757d">
                 <small class="text-muted">- No upcomming events -</small>
               </div>
           <% } %>
-
           <div class="row">
 
 
             <% for(var i=0; i< todos.length; i++){ %>
 
-              <div class="col-sm-6">
+              <div class="col-md-6 mb-3">
                 <div class="card">
                   <div class="card-header" style="color: white;">
                     <%= todos[i].name %>
                   </div>
                   <div class="card-body">
                     <ul class="list-group" style="border:none; text-align:left;">
-                      <li class="list-group-item" style="height: 50px; vertical-align: top;"><%= todos[i].des %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">loyalty</i>
-                        <% if(todos[i].percent == 0) {%>
-                          No promo
-                        <% }else{ %>
-                          <%= todos[i].code %> - <%= todos[i].percent %>%
+                      <li class="list-group-item" style="height: 100px; vertical-align: top; font-style:italic;">
+                        <%= todos[i].des %></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><span><%= todos[i].date.toLocaleDateString("en-US") %></span></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><span><%= todos[i].start %> - <%= todos[i].end %></span></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><span><%= todos[i].address %></span></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><span><%= todos[i].max %></span></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><span><%= todos[i].price %></span></li>
+                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">loyalty</i><span><% if(todos[i].percent == 0) {%>No promo
+                        <% }else{ %><%= todos[i].code %> - <%= todos[i].percent %>%
                         <% } %>
 
-                      </li>
+                      </span></li>
                       <li style="text-align: center;" class="list-group-item">
-                        <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Modify</button>
-                        <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Delete</button>
+                        <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Modify</button>
+                        <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Delete</button>
                       </li>
                     </ul>
                   </div>
-                  <div class="card-header" style="color: white; padding: 0px 0px;">
-                    <i class="material-icons" style="font-size: 12px;">assignment_ind</i><%= todos[i].creator %>
+                  <div class="card-header" style="color: white; padding: 0px 0px; border-bottom: 0px">
+                    <i class="material-icons" style="font-size: 12px; padding-right:5px;">assignment_ind</i><%= todos[i].creator %>
                   </div>
                 </div>
               </div>

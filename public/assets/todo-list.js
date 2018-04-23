@@ -20,8 +20,8 @@ $(document).ready(function(){
         location.href="/staff";
       },
       error: function(){
-        alert("Incorrect username or password or type !!!");
-        location.href="/loginStaff";
+        $('#exampleModalCenter2').modal('show')
+
       }
     });
 
@@ -47,8 +47,7 @@ $(document).ready(function(){
         location.href="/student";
       },
       error: function(){
-        alert("Incorrect username or password or type !!!");
-        location.href="/loginStudent";
+        $('#exampleModalCenter2').modal('show')
       }
     });
 
@@ -100,8 +99,8 @@ $(document).ready(function(){
         },
         error: function()
         {
-          alert("You are not creator of this event !");
-          location.reload();
+
+          $('#exampleModalCenter1').modal('show')
         }
       });
   });
@@ -140,11 +139,22 @@ $(document).ready(function(){
         },
         error: function()
         {
-          alert("You are not creator of this event !");
-          location.reload();
+          $('#exampleModalCenter1').modal('show')
+
         }
       });
   });
+
+
+    $('#showEvent').on('change', function() {
+      console.log(this.value);
+      $('#show').submit();
+
+  });
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////Student
 
@@ -169,7 +179,7 @@ $(document).ready(function(){
           }
           else if (data == "capacity")
           {
-            $('.alert .alert-danger').alert()
+
             location.reload();
           }
           else {
@@ -255,32 +265,7 @@ $(document).ready(function(){
     });
 
 
-    $('.checkCode').on('submit', function(){
 
-      var code = $('#codeInput');
-      var n = $('#codeInput').attr("name");
-
-      $.ajax({
-        type: 'GET',
-        url: '/paymentBooking/' + code.val() +'/' +n,
-        success: function(data){
-          //do something with the data via fron-end framework
-
-          //location.href="/staff";
-          var p = (data.price * data.percent) /100;
-          var per = data.percent;
-          $('#more').append("<li class='list-group-item d-flex justify-content-between bg-light'><div class='text-success'><h6 class='my-0'>Promo code</h6><small>Discount</small></div><span class='text-success'>-"+per+"%</span></li>");
-          document.getElementById('codeC').innerHTML = p;
-
-        },
-        error: function()
-        {
-          location.href="/paymentBooking/" + n;
-        }
-      });
-
-      return false;
-    });
 
 
   /*$('p4').on('click', function(){

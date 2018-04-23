@@ -38,7 +38,7 @@
               </table> <div></div>
           </div>
     <br>
-    <h7 class="marginSet2">View Booking List</h7>
+    <h7 class="marginSet2">View Bookings</h7>
     <br>
     <br>
     <% if(todos.length == 0) {%>
@@ -47,7 +47,7 @@
         </div>
     <% } %>
 
-    <div class="row" style="margin: 0px 80px;">
+    <div class="row" style="margin: 0px 150px;">
       <div class="col-4">
         <div class="list-group" id="list-tab" role="tablist">
           <% for(var i=0; i< todos.length; i++){ %>
@@ -66,27 +66,29 @@
           <% for(var i=0; i< todos.length; i++){ %>
             <% if(i==0){ %>
               <div class="tab-pane fade show active" id="list-<%= todos[i].num %>" role="tabpanel" aria-labelledby="list-profile-list">
-                <ul class="list-group">
-                  <li class="list-group-item" style="height: 50px; vertical-align: top;"><%= todos[i].des %></li>
+                <ul class="list-group" style="width: 500px">
+                  <li class="list-group-item" style="height: 100px; vertical-align: top;"><%= todos[i].des %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
-                  <li class="list-group-item"><button class="buttCancel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px; background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Cancel</button></li>
+
+                  <li class="list-group-item" style="text-align: center;"><button class="buttCancel" type="button" name="<%= todos[i].num %>">Cancel</button></li>
 
                 </ul>
               </div>
             <% } else { %>
               <div class="tab-pane fade" id="list-<%= todos[i].num %>" role="tabpanel" aria-labelledby="list-profile-list">
-                <ul class="list-group">
-                  <li class="list-group-item" style="height: 50px; vertical-align: top;"><%= todos[i].des %></li>
+                <ul class="list-group" style="width: 500px">
+                  <li class="list-group-item" style="height: 100px; vertical-align: top;"><%= todos[i].des %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
+                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
                   <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
-                  <li class="list-group-item"><button class="buttCancel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px; background-color: white; border: 4px double rgba(203, 54, 54, 0.71); font-size: 18px;">Cancel</button></li>
+
+                  <li class="list-group-item" style="text-align: center;"><button class="buttCancel" type="button" name="<%= todos[i].num %>">Cancel</button></li>
 
                 </ul>
               </div>

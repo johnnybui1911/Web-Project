@@ -66,7 +66,7 @@ module.exports = function(app){
     }
     else {
       x = doc.num + 1;
-      console.log(x);
+      
     }
 
   });
@@ -100,9 +100,57 @@ module.exports = function(app){
       res.render('index');
     }*/
 
+
     Todo.find({}).sort('-date').exec( function(err, data){
       if (err) throw err;
-      res.render('viewEvent', {todos: data, user: req.session.user});
+
+
+      if(req.query.showE=="all")
+      {
+        res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
+      }
+      else if(req.query.showE=="upcomming") {
+        var array=[];
+        var da = new Date();
+        var dd = da.getDate();
+        var mm = da.getMonth();
+        var yy = 1900+da.getYear();
+
+        var d = new Date(yy, mm, dd);
+
+        for(var i=0; i<data.length; i++)
+        {
+          if(data[i].date>=d)
+          {
+            array.push(data[i]);
+          }
+        }
+        res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+      }
+      else if(req.query.showE=="past") {
+        var array=[];
+        var da = new Date();
+        var dd = da.getDate();
+        var mm = da.getMonth();
+        var yy = 1900+da.getYear();
+
+
+        var d = new Date(yy, mm, dd);
+
+
+        for(var i=0; i<data.length; i++)
+        {
+          if(data[i].date<d)
+          {
+            array.push(data[i]);
+          }
+        }
+        res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+      }
+      else {
+        res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
+      }
+
     });
   });
 
