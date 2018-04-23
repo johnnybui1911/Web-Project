@@ -2,7 +2,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var User = require('./userSchema');
 //Connect to database
-mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
 
 /*var itemOne = User({username: "bhv111", password: "123456", type: "staff", array: []})
 .save(function(err){

@@ -3,6 +3,10 @@ var staffController = require('./controllers/staffController');
 var studentController = require('./controllers/studentController');
 var loginController = require('./controllers/loginController');
 var session = require('express-session');
+var mongoose = require('mongoose');
+var staff = require('./controllers/staff');
+
+mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
 
 var app = express();
 
@@ -36,7 +40,7 @@ app.get('/loginStudent', function(req, res){
 });
 
 
-
+app.use("/", staff);
 //---------------------------------------------------------------------
 
 

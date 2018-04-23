@@ -34,18 +34,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = function(app){
 
-  //staffPage
-  app.get('/staff', function(req, res){
-    if(req.session.logginCheck1)
-    {
-      res.render('staff', {user: req.session.user});
-    }
-    else {
-      res.render('index');
-    }
-
-  });
-
 
   //---------------------------------------------------------------------
 
@@ -66,7 +54,7 @@ module.exports = function(app){
     }
     else {
       x = doc.num + 1;
-      
+
     }
 
   });

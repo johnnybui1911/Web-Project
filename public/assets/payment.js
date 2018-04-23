@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
   var newPrice = document.getElementById('codeC').innerHTML
-  
+
   $('.checkCode').on('submit', function(){
 
     var code = $('#codeInput');
@@ -21,6 +21,10 @@ $(document).ready(function(){
         var per = data.percent;
         $('#more').append("<li class='list-group-item d-flex justify-content-between bg-light'><div class='text-success'><h6 class='my-0'>Promo code</h6><small>Discount</small></div><span class='text-success'>-"+per+"%</span></li>");
         document.getElementById('codeC').innerHTML = p;
+        setTimeout(() => {
+          $('#alertShow').alert('close');
+
+        }, 500);
 
       },
       error: function()
@@ -29,6 +33,9 @@ $(document).ready(function(){
         document.getElementById('more').innerHTML = " ";
         document.getElementById('codeC').innerHTML = newPrice;
         document.getElementById('checkRedeem').reset();
+        console.log("123");
+        $('#alertShow').show();
+
       }
     });
 

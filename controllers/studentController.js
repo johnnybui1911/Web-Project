@@ -4,10 +4,6 @@ var Todo = require('./serverController');
 var Booking = require('./serverController2');
 var User = require('./userSchema');
 
-//Connect to database
-mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
-
-
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 

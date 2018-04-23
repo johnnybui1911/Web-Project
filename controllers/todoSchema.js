@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
+
 
 
 //Create a schema - this is like a blueprint

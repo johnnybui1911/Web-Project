@@ -198,7 +198,7 @@ a:hover {
 }
 
 .material-icons {
-  padding-right: 15px;
+  padding-right: 10px;
 }
 
 .styleButton:hover, .butt:hover, .buttDel:hover, .buttCancel:hover, .buttBooking:hover, .buttCode:hover, .buttCancel2:hover, #resetBtn:hover {
@@ -349,4 +349,18 @@ i {
 .background {
   color: rgba(203, 54, 54, 0.71);
   font-weight: bold;
+}
+
+
+.btn-secondary {
+  background-color: white;
+  border: 4px double rgba(203, 54, 54, 0.71);
+  color: black;
+}
+
+.btn-secondary:hover {
+  color: white;
+  background-color: rgba(203, 54, 54, 0.71);
+  font-weight: bold;
+  border: 4px double;
 }

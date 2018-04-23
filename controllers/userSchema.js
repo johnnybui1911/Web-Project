@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 
-//Connect to database
-mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
 
 var todoSchema = require('./todoSchema');
 //Create a schema - this is like a blueprint
