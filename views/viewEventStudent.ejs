@@ -52,62 +52,65 @@
       </div>
       <% } %>
       <br>
-      <div class="row">
-        <% for(var i=0; i< todos.length; i++){ %>
-          <div class="col-md-6 mb-3">
-            <div class="card">
-              <div class="card-header" style="color: white;">
-                <%= todos[i].name %>
-              </div>
-              <div class="card-body">
-                <ul class="list-group" style="border:none; text-align:left;">
-                  <li class="list-group-item" style="height: 100px; vertical-align: top;"><%= todos[i].des %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
-                  <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
+      <div class="container">
+        <div class="row">
+          <% for(var i=0; i< todos.length; i++){ %>
+            <div class="col-12 col-md-6 mb-3">
+              <div class="card2">
+                <div class="card-header" style="color: white;">
+                  <%= todos[i].name %>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group" style="border:none; text-align:left;">
+                    <li class="list-group-item" style="height: 100px; vertical-align: top;"><%= todos[i].des %></li>
+                    <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><%= todos[i].date.toLocaleDateString("en-US") %></li>
+                    <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><%= todos[i].start %> - <%= todos[i].end %></li>
+                    <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><%= todos[i].address %></li>
+                    <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><%= todos[i].max %></li>
+                    <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><%= todos[i].price %></li>
 
-                  <li class="list-group-item" style="text-align: center;">
-                    <% if(todos[i].check == true) {%>
-                      <button class="buttCancel2" type="button" name="<%= todos[i].num %>">Cancel</button>
-                      <% }else{ %>
-
-                        <% if(todos[i].max == 0) {%>
-                          <button class="buttBooking" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                    <li class="list-group-item" style="text-align: center;">
+                      <% if(todos[i].check == true) {%>
+                        <button class="buttCancel2" type="button" name="<%= todos[i].num %>">Cancel</button>
                         <% }else{ %>
-                          <button class="buttBooking" type="button" name="<%= todos[i].num %>">Book</button>
+
+                          <% if(todos[i].max == 0) {%>
+                            <button class="buttBooking" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                          <% }else{ %>
+                            <button class="buttBooking" type="button" name="<%= todos[i].num %>">Book</button>
+                          <% } %>
+
                         <% } %>
+                      <!-- <button class="buttBooking" type="button" name="<%= todos[i].num %>" >Book</button> -->
 
-                      <% } %>
-                    <!-- <button class="buttBooking" type="button" name="<%= todos[i].num %>" >Book</button> -->
+                    </li>
 
-                  </li>
+                  </ul>
+                </div>
 
-                </ul>
-              </div>
-
-                  <% if(todos[i].max == 0) {%>
-                    <div class="alert alert-danger" role="alert">
-                      Full
-                    </div>
-                  <% }else{ %>
-                    <% if(todos[i].check == true) {%>
-                      <div class="alert alert-secondary" role="alert">
-                        Booked
+                    <% if(todos[i].max == 0) {%>
+                      <div class="alert alert-danger" role="alert">
+                        Full
                       </div>
                     <% }else{ %>
-                      <div class="alert alert-success" role="alert">
-                        Available
-                      </div>
+                      <% if(todos[i].check == true) {%>
+                        <div class="alert alert-secondary" role="alert">
+                          Booked
+                        </div>
+                      <% }else{ %>
+                        <div class="alert alert-success" role="alert">
+                          Available
+                        </div>
+                      <% } %>
                     <% } %>
-                  <% } %>
+              </div>
             </div>
+            <% } %>
           </div>
-          <% } %>
-        </div>
 
 
+
+      </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

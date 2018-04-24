@@ -87,43 +87,47 @@
                 <small class="text-muted">- No upcomming events -</small>
               </div>
           <% } %>
-          <div class="row">
+
+          <div class="container">
+            <div class="row">
 
 
-            <% for(var i=0; i< todos.length; i++){ %>
+              <% for(var i=0; i< todos.length; i++){ %>
 
-              <div class="col-md-6 mb-3">
-                <div class="card">
-                  <div class="card-header" style="color: white;">
-                    <%= todos[i].name %>
-                  </div>
-                  <div class="card-body">
-                    <ul class="list-group" style="border:none; text-align:left;">
-                      <li class="list-group-item" style="height: 100px; vertical-align: top; font-style:italic;">
-                        <%= todos[i].des %></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><span><%= todos[i].date.toLocaleDateString("en-US") %></span></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><span><%= todos[i].start %> - <%= todos[i].end %></span></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><span><%= todos[i].address %></span></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><span><%= todos[i].max %></span></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><span><%= todos[i].price %></span></li>
-                      <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">loyalty</i><span><% if(todos[i].percent == 0) {%>No promo
-                        <% }else{ %><%= todos[i].code %> - <%= todos[i].percent %>%
-                        <% } %>
+                <div class="col-md-6 mb-3">
+                  <div class="card2">
+                    <div class="card-header" style="color: white;">
+                      <%= todos[i].name %>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-group" style="border:none; text-align:left;">
+                        <li class="list-group-item" style="height: 100px; vertical-align: top; font-style:italic;">
+                          <%= todos[i].des %></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">date_range</i><span><%= todos[i].date.toLocaleDateString("en-US") %></span></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">access_time</i><span><%= todos[i].start %> - <%= todos[i].end %></span></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">location_on</i><span><%= todos[i].address %></span></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">accessibility</i><span><%= todos[i].max %></span></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">attach_money</i><span><%= todos[i].price %></span></li>
+                        <li class="list-group-item"><i class="material-icons" style="font-size: 18px;">loyalty</i><span><% if(todos[i].percent == 0) {%>No promo
+                          <% }else{ %><%= todos[i].code %> - <%= todos[i].percent %>%
+                          <% } %>
 
-                      </span></li>
-                      <li style="text-align: center;" class="list-group-item">
-                        <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Modify</button>
-                        <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Delete</button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="card-header" style="color: white; padding: 0px 0px; border-bottom: 0px">
-                    <i class="material-icons" style="font-size: 12px; padding-right:5px;">assignment_ind</i><%= todos[i].creator %>
+                        </span></li>
+                        <li style="text-align: center;" class="list-group-item">
+                          <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Modify</button>
+                          <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Delete</button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-header" style="color: white; padding: 0px 0px; border-bottom: 0px">
+                      <i class="material-icons" style="font-size: 12px; padding-right:5px;">assignment_ind</i><%= todos[i].creator %>
+                    </div>
                   </div>
                 </div>
+              <% } %>
               </div>
-            <% } %>
-            </div>
+          </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
