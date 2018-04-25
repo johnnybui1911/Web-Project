@@ -40,7 +40,14 @@ module.exports = function(app){
   //createEvent
   app.get('/createEvent', function(req, res){
 
-    res.render('createEvent', {user: req.session.user});
+    if(req.session.logginCheck1)
+    {
+      res.render('createEvent', {user: req.session.user});
+    }
+    else {
+      res.render('index');
+    }
+
 
   });
 
@@ -78,68 +85,65 @@ module.exports = function(app){
   //viewEvent
   app.get('/viewEvent', function(req, res){
     //get data from mongodb and pass it to view
-    /*if(req.session.logginCheck1)
+    if(req.session.logginCheck1)
     {
+      Todo.find({}).sort('-date').exec( function(err, data){
+        if (err) throw err;
+        if(req.query.showE=="all")
+        {
+          res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
+        }
+        else if(req.query.showE=="upcomming") {
+          var array=[];
+          var da = new Date();
+          var dd = da.getDate();
+          var mm = da.getMonth();
+          var yy = 1900+da.getYear();
+
+          var d = new Date(yy, mm, dd);
+
+          for(var i=0; i<data.length; i++)
+          {
+            if(data[i].date>=d)
+            {
+              array.push(data[i]);
+            }
+          }
+          res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+        }
+        else if(req.query.showE=="past") {
+          var array=[];
+          var da = new Date();
+          var dd = da.getDate();
+          var mm = da.getMonth();
+          var yy = 1900+da.getYear();
 
 
+          var d = new Date(yy, mm, dd);
+
+
+          for(var i=0; i<data.length; i++)
+          {
+            if(data[i].date<d)
+            {
+              array.push(data[i]);
+            }
+          }
+          res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+        }
+        else {
+          res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
+        }
+
+      });
 
     }
     else {
       res.render('index');
-    }*/
+    }
 
 
-    Todo.find({}).sort('-date').exec( function(err, data){
-      if (err) throw err;
 
-
-      if(req.query.showE=="all")
-      {
-        res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
-      }
-      else if(req.query.showE=="upcomming") {
-        var array=[];
-        var da = new Date();
-        var dd = da.getDate();
-        var mm = da.getMonth();
-        var yy = 1900+da.getYear();
-
-        var d = new Date(yy, mm, dd);
-
-        for(var i=0; i<data.length; i++)
-        {
-          if(data[i].date>=d)
-          {
-            array.push(data[i]);
-          }
-        }
-        res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
-      }
-      else if(req.query.showE=="past") {
-        var array=[];
-        var da = new Date();
-        var dd = da.getDate();
-        var mm = da.getMonth();
-        var yy = 1900+da.getYear();
-
-
-        var d = new Date(yy, mm, dd);
-
-
-        for(var i=0; i<data.length; i++)
-        {
-          if(data[i].date<d)
-          {
-            array.push(data[i]);
-          }
-        }
-        res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
-      }
-      else {
-        res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
-      }
-
-    });
   });
 
   app.get('/viewEvent/:num', function(req, res){
@@ -198,16 +202,25 @@ module.exports = function(app){
 
   var num = 0
   app.get('/adjustEvent/:num', function(req, res){
-
     num = req.params.num;
-    //console.log(num);
-    Todo.findOne({num: num}, function(err, foundObject){
 
-      if (err) throw err;
-      //console.log(foundObject.name);
-      res.render('adjustEvent', {todos: foundObject, user: req.session.user});
+    if(req.session.logginCheck1)
+    {
+      //console.log(num);
+      Todo.findOne({num: num}, function(err, foundObject){
 
-    });
+        if (err) throw err;
+        //console.log(foundObject.name);
+        res.render('adjustEvent', {todos: foundObject, user: req.session.user});
+
+      });
+    }
+    else {
+      res.render('index');
+    }
+
+
+
   });
 
   app.delete('/viewEvent/:n', function(req, res){

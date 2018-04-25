@@ -41,14 +41,22 @@ module.exports = function(app){
     //get data from mongodb and pass it to view
       number = req.params.num;
 
-      Todo.findOne({num: number}, function(err, foundObject){
-        res.render('paymentBooking', {number: number, user: req.session.user, todos: foundObject});
-      });
+      if(req.session.logginCheck2)
+      {
+        Todo.findOne({num: number}, function(err, foundObject){
+          res.render('paymentBooking', {number: number, user: req.session.user, todos: foundObject});
+        });
+      }
+      else {
+        res.render('index');
+      }
+
   });
 
   app.get('/paymentBooking/:check/:num', function(req, res){
     //get data from mongodb and pass it to view
-
+    if(req.session.logginCheck2)
+    {
       Todo.findOne({num: number}, function(err, foundObject){
           if(foundObject.code == req.params.check)
           {
@@ -59,6 +67,11 @@ module.exports = function(app){
             res.json();
           }
       });
+    }
+    else {
+      res.render('index');
+    }
+
   });
 
   app.post('/paymentBooking/:num', urlencodedParser, function(req, res){
