@@ -30,6 +30,7 @@ app.use(session({secret: "Shh, its a secret!"}));
 
 //homepage
 app.get('/index', function(req, res){
+  req.session.logginType = "student";
   req.session.logginCheck1 = false;
   req.session.logginCheck2 = false;
   res.render('index');
