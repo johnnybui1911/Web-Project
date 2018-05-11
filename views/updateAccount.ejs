@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <title>CSCI214Project</title>
+  <script
+  src="https://code.jquery.com/jquery-1.12.3.min.js"
+  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+  crossorigin="anonymous"></script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.time.css" />
+
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+  <style>
+    #nav1 {
+      color: rgba(0,0,0,.3);
+    }
+    #nav2 {
+      color: rgba(0,0,0,.3);
+    }
+    #nav3 {
+      color: rgba(0,0,0,.3);
+    }
+    #nav4 {
+      color: rgba(0,0,0,.3);
+    }
+    #nav5 {
+      color: rgba(0,0,0,.3);
+    }
+    #nav6 {
+      color: rgba(0,0,0,.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div style="margin: auto; text-align: center;">
+    <img src="/assets/W2.jpg" alt="uow" height="80px">
+  </div>
+  <% if(details.type == "student") {%>
+      <% include partials/navBarStudent.ejs %>
+  <% }else{ %>
+      <% include partials/navBarStaff.ejs %>
+  <% } %>
+
+    <br>
+
+    <div class="background">
+      <h7 class="marginSet2" style="margin-left:320px;">Update Account</h7>
+      <br>
+
+      <div class="marginSet">
+        <form method="POST" id="formUpdateAccount">
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Full name</label>
+              <input type="text" class="form-control" id="fullNameA" name="fullNameA"  value="<%= details.fullName %>" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault03">Phone Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="phoneNumberA" name="phoneNumberA" value="<%= details.phoneNumber %>" required>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault03">Phone Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="phoneNumberA" name="phoneNumberA" value="<%= details.phoneNumber %>" required>
+              </div>
+            </div>
+          </div> -->
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault04">Email</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="emailAccountA" name="emailAccountA" value="<%= details.email %>" required>
+              </div>
+            </div>
+            <div class="col-md-2 mb-3">
+              <label for="validationDefault04">Student Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="studentNumberA" name="studentNumberA" value="<%= details.studentNumber %>" required>
+              </div>
+            </div>
+          </div>
+          <div class="ce" style="text-align: center; margin-right: 800px;">
+            <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px;width: 200px; font-size: 18px; margin-left:160px;">Update</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <br>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.3.min.js"
+    integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/assets/updateAccount-client.js"></script>
+  </body>
+
+  </html>

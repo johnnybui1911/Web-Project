@@ -15,6 +15,17 @@
           .row {
             margin: 0 80px;
           }
+
+            #nav4 {
+              color: rgba(0,0,0,.3);
+            }
+            #nav5 {
+              color: rgba(0,0,0,.3);
+            }
+            #nav6 {
+              color: rgba(0,0,0,.3);
+            }
+
         </style>
 
       </head>
@@ -23,25 +34,9 @@
         <div style="margin: auto; text-align: center;">
         <img src="/assets/W2.jpg" alt="uow" height="80px">
         </div>
-          <div class="head">
-                <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
-                  <tr>
-                    <td>
-                      STUDENT &nbsp;
-                      <span style=" font-size: 16px; font-style: italic;">
-                      <a href="/student" style="color: rgba(0,0,0,.3)">Home</a> &nbsp;
-                      <a href="/viewEventStudent" style="color: rgba(0,0,0,.3)">View Event</a> &nbsp;
-                      <a href="/viewBooking" style="color: rgba(0,0,0,.9)">View Booking</a> &nbsp;</span>
-                    </td>
-                    <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
-                      <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
-                      &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
-                      </td>
-                  </tr>
-                </table> <div></div>
-            </div>
+          <% include partials/navBarStudent.ejs %>
             <br>
-            <h7 class="marginSet2">Checkout</h7>
+            <h7 class="marginSet2" style="margin-left:180px">Checkout</h7>
             <div class="row">
               <div class="col-md-4 order-md-2 mb-4">
                 <br>

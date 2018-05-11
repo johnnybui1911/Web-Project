@@ -1,0 +1,34 @@
+<nav>
+<div class="head">
+      <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
+        <tr>
+          <td>
+            STUDENT &nbsp;
+            <span style=" font-size: 16px; font-style: italic;">
+            <a id="nav4" href="/student">Home</a> &nbsp;
+            <a id="nav5" href="/viewEventStudent">View Event</a> &nbsp;
+            <a id="nav6" href="/viewBooking">View Booking</a> &nbsp;</span>
+          </td>
+          <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
+            <div class="dropdown show">
+              <a  class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/viewAccount">Account</a>
+
+                <a class="dropdown-item" href="/viewHistory">Activity History</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/updateAccount/<%= user%>">Update Info</a>
+
+                <a class="dropdown-item" href="/changePassAccount/<%= user%>">Change Password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/index">Sign out</a>
+              </div>
+            </div>
+            </td>
+        </tr>
+      </table> <div></div>
+  </div>
+</nav>

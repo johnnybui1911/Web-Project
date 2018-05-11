@@ -7,7 +7,12 @@ var userSchema = new mongoose.Schema({
   username: String,
   password: String,
   type: String,
-  array: [todoSchema]
+  array: [todoSchema],
+  fullName: String,
+  phoneNumber: String,
+  email: String,
+  studentNumber: String,
+  history: [{action: String, time: Date}]
 });
 
 var User = mongoose.model('User', userSchema);

@@ -93,6 +93,9 @@ module.exports = function(app){
               if(err) throw err;
             });
 
+            var date = new Date();
+            found.history.push({action: "Book Event " +foundObject.name, time: date});
+
             found.save(function(err, update){
               if(err) throw err;
               res.redirect('/viewBooking');
@@ -202,7 +205,8 @@ module.exports = function(app){
               });
 
               //console.log(found.array);
-
+              var date = new Date();
+              found.history.push({action: "Book Event " +foundObject.name, time: date});
 
               found.save(function(err, update){
                 if(err) throw err;
@@ -246,7 +250,7 @@ module.exports = function(app){
         var array = data.array;
         array.sort(function(a,b){
         return b.date - a.date;
-});
+        });
 
         res.render('viewBooking', {todos: array, user: req.session.user});
       });
@@ -267,6 +271,7 @@ module.exports = function(app){
       if(err) throw err;
       var x = 0;
       //console.log(data.array);
+      // console.log(data);
       var length = data.array.length;
       for(var i =0; i<length; i++)
       {
@@ -279,22 +284,28 @@ module.exports = function(app){
 
       data.array.splice(x, 1);
 
-
+      var name;
       Todo.findOne({num: req.params.n}, function(err, foundObject){
+        name = foundObject.name;
+        console.log(name);
         foundObject.booked = foundObject.booked -1;
         foundObject.max = foundObject.max +1;
         foundObject.save(function(err, update){
           if(err) throw err;
         });
+
+        var date = new Date();
+        data.history.push({action: "Cancel Booking " + name, time: date});
+        //console.log(data.array);
+        data.save(function(err, update){
+          if(err) throw err;
+          res.json(update);
+        });
       });
 
 
 
-      //console.log(data.array);
-      data.save(function(err, update){
-        if(err) throw err;
-        res.json(update);
-      });
+
 
     });
   });
@@ -319,22 +330,27 @@ module.exports = function(app){
 
       data.array.splice(x, 1);
 
-
+      var name;
       Todo.findOne({num: req.params.n}, function(err, foundObject){
         foundObject.booked = foundObject.booked -1;
         foundObject.max = foundObject.max +1;
+        name = foundObject.name;
         foundObject.save(function(err, update){
           if(err) throw err;
+        });
+
+        var date = new Date();
+        data.history.push({action: "Cancel Booking " + name, time: date});
+        data.save(function(err, update){
+          if(err) throw err;
+          res.json(update);
         });
       });
 
 
 
       //console.log(data.array);
-      data.save(function(err, update){
-        if(err) throw err;
-        res.json(update);
-      });
+
 
     });
   });

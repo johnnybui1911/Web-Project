@@ -16,29 +16,26 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
+
+
+      <style>
+        #nav1 {
+          color: rgba(0,0,0,.3);
+        }
+        #nav2 {
+          color: rgba(0,0,0,.3);
+        }
+        #nav3 {
+          color: rgba(0,0,0,.9);
+        }
+      </style>
       </head>
 
       <body>
         <div style="margin: auto; text-align: center;">
         <img src="/assets/W2.jpg" alt="uow" height="80px">
         </div>
-        <div class="head">
-              <table class="no" style="text-align: left; font-weight: bold; font-size: 20px;">
-                <tr>
-                  <td>
-                    STAFF &nbsp;
-                    <span style=" font-size: 16px; font-style: italic;">
-                    <a href="/staff" style="color: rgba(0,0,0,.3)">Home</a> &nbsp;
-                    <a href="/createEvent" style="color: rgba(0,0,0,.3)">Create Event</a> &nbsp;
-                    <a href="/viewEvent" style="color: rgba(0,0,0,.9)">View Event</a> &nbsp;</span>
-                  </td>
-                  <td style="text-align: right; font-size: 18px; font-style: italic; padding-right:15px;">
-                    <i class="material-icons" style="font-size: 15px;">account_circle</i><%= user %>
-                    &nbsp; <a href="/index"><a href="/index"><i class="fas fa-power-off"></i></a>
-                    </td>
-                </tr>
-              </table> <div></div>
-          </div>
+        <% include partials/navBarStaff.ejs %>
 
 
           <!-- Modal -->
@@ -62,10 +59,10 @@
           </div>
 
           <br>
-          <h7 class="marginSet2">View Current Event</h7>
+          <h7 class="marginSet2" style="margin-left:200px">View Current Event</h7>
           <br>
           <form id="show" method="get" action="./viewEvent">
-            <select id="showEvent" name="showE" class="form-control form-control-sm" style="width: 180px; margin: 0px 170px;">
+            <select id="showEvent" name="showE" class="form-control form-control-sm" style="width: 180px; margin: 0px 200px;">
               <option value="all">All events</option>
               <% if(selectVal == "upcomming") {%>
                 <option value="upcomming" selected>Upcoming events</option>

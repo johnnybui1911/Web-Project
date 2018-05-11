@@ -72,6 +72,16 @@ module.exports = function(app){
     //console.log(req.body);
     req.body.creator = req.session.user;
 
+    var user = req.session.user;
+    User.findOne({username: user}, function(err, foundObject){
+      if(err) throw err;
+      var date = new Date();
+      foundObject.history.push({action: "Create Event " +req.body.name, time: date});
+      foundObject.save(function(err, saveObject){
+        if(err) throw err;
+      });
+    });
+
     var newTodo = Todo(req.body).save(function(err, data){
       if (err) throw err;
       res.json(data);
@@ -237,6 +247,7 @@ module.exports = function(app){
         res.json();
       }
       else {
+        var name = foundObject.name;
         Todo.find({num: n}).remove(function(err, data){
           if(err) throw err;
 
@@ -266,6 +277,16 @@ module.exports = function(app){
             }
           });
 
+          var user = req.session.user;
+          User.findOne({username: user}, function(err, foundObject){
+            if(err) throw err;
+            var date = new Date();
+            foundObject.history.push({action: "Delete Event " +name, time: date});
+            foundObject.save(function(err, saveObject){
+              if(err) throw err;
+            });
+          });
+
           res.json(data);
         });
       }
@@ -278,8 +299,11 @@ module.exports = function(app){
 
   app.post('/adjustEvent/:num', urlencodedParser, function(req, res){
 
+    var event;
     Todo.findOne({num: num}, function(err, foundObject){
       if (err) throw err;
+      event = foundObject.name;
+
 
       foundObject.name = req.body.nameA;
       foundObject.des = req.body.desA;
@@ -329,6 +353,18 @@ module.exports = function(app){
 
       });
 
+
+      var user = req.session.user;
+
+      User.findOne({username: user}, function(err, userFound){
+        if(err) throw err;
+        var date = new Date();
+        userFound.history.push({action: "Update Event "+event, time: date});
+
+        userFound.save(function(err, saveObject){
+          if(err) throw err;
+        });
+      });
 
       //console.log(foundObject);
       foundObject.save(function(err, updatedObject){

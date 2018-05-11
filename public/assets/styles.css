@@ -5,6 +5,8 @@ body {
   margin: 0px 0px;
 }
 
+
+
 .navbar {
   background-color: rgba(203, 54, 54, 0.71) !important;
   font-weight: bold;
@@ -45,7 +47,7 @@ textarea {
 
 .card2 {
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  
+
   border-radius: 5px;
   margin: 10px auto;
   text-align: center;
@@ -358,6 +360,7 @@ i {
 .background {
   color: rgba(203, 54, 54, 0.71);
   font-weight: bold;
+  margin-left: 50px;
 }
 
 
@@ -372,4 +375,16 @@ i {
   background-color: rgba(203, 54, 54, 0.71);
   font-weight: bold;
   border: 4px double;
+}
+
+.input-group-sm>.input-group-append>select.btn:not([size]):not([multiple]), .input-group-sm>.input-group-append>select.input-group-text:not([size]):not([multiple]), .input-group-sm>.input-group-prepend>select.btn:not([size]):not([multiple]), .input-group-sm>.input-group-prepend>select.input-group-text:not([size]):not([multiple]), .input-group-sm>select.form-control:not([size]):not([multiple]), select.form-control-sm:not([size]):not([multiple]) {
+    height: 38;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+
+    text-decoration: none;
+    background-color: #f8f9fa;
+    color: rgba(203, 54, 54, 0.71);
+    font-weight: bold;
 }

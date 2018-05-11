@@ -4,8 +4,16 @@ var staffController = require('./controllers/staffController');
 var studentController = require('./controllers/studentController');
 var loginController = require('./controllers/loginController');
 var session = require('express-session');
+
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var staff = require('./controllers/staff');
+var Todo = require('./controllers/serverController');
+var Booking = require('./controllers/serverController2');
+var User = require('./controllers/userSchema');
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 
 mongoose.connect('mongodb://test:test@ds227119.mlab.com:27119/csit214events');
 
@@ -45,6 +53,120 @@ app.get('/loginStudent', function(req, res){
 app.use("/", staff);
 //---------------------------------------------------------------------
 
+app.get('/createAccount', function(req, res){
+    res.render('createAccount');
+});
+
+
+app.post('/createAccount', urlencodedParser, function(req, res){
+  //get data from the view and add it to mongodb
+
+  var newTodo = User(req.body).save(function(err, data){
+    if (err) throw err;
+    res.json(data);
+  });
+
+});
+
+app.get('/viewAccount', function(req, res){
+  //get data from mongodb and pass it to view
+  var user = req.session.user;
+  //console.log(req.session.user);
+  User.findOne({username: user}, function (err, data){
+    if (err) throw err;
+    //console.log(data.array);
+    res.render('viewAccount', {details: data, user: req.session.user});
+  });
+
+});
+
+app.get('/viewHistory', function(req, res){
+  //get data from mongodb and pass it to view
+  var user = req.session.user;
+  //console.log(req.session.user);
+  User.findOne({username: user}, function (err, data){
+    if (err) throw err;
+    //console.log(data.array);
+    res.render('viewHistory', {activities: data.history, user: req.session.user, details: data});
+  });
+
+});
+
+
+app.get('/updateAccount/:user', function(req, res){
+  //get data from mongodb and pass it to view
+  var user = req.session.user;
+
+  //console.log(req.session.user);
+  User.findOne({username: user}, function (err, data){
+    if (err) throw err;
+    //console.log(data.array);
+    res.render('updateAccount', {details: data, user: req.session.user});
+  });
+
+});
+
+app.post('/updateAccount/:user', urlencodedParser, function(req, res){
+  var user = req.params.user;
+
+  User.findOne({username: user}, function (err, foundObject){
+    if (err) throw err;
+
+    foundObject.fullName = req.body.fullNameA;
+    foundObject.phoneNumber = req.body.phoneNumberA;
+    foundObject.email = req.body.emailAccountA;
+    foundObject.studentNumber = req.body.studentNumberA;
+
+    foundObject.save(function(err, updatedObject){
+      if (err) throw err;
+      res.redirect('/viewAccount');
+    });
+
+  });
+
+});
+
+
+app.get('/changePassAccount/:user', function(req, res){
+  //get data from mongodb and pass it to view
+  var user = req.session.user;
+
+  //console.log(req.session.user);
+  User.findOne({username: user}, function (err, data){
+    if (err) throw err;
+    //console.log(data.array);
+    res.render('changePassAccount', {details: data, user: req.session.user});
+  });
+
+});
+
+app.post('/changePassAccount/:user', urlencodedParser, function(req, res){
+  var user = req.params.user;
+
+  User.findOne({username: user}, function (err, foundObject){
+    if (err) throw err;
+
+    if(foundObject.password!=req.body.oldPass)
+    {
+
+      res.send("Error");
+
+    }
+    else {
+      foundObject.password = req.body.newPass;
+      foundObject.save(function(err, updatedObject){
+        if (err) throw err;
+        res.send("Done");
+      });
+    }
+
+
+
+
+
+  });
+
+});
 
 //file controllers
 loginController(app);
