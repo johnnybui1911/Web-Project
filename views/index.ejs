@@ -10,33 +10,67 @@
         <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
         <script src="/assets/todo-list.js"></script>
+        <style media="screen">
+          body{
+            background: #e8e8e8;
+          }
+
+          .card {
+            background-color: white;
+          }
+
+          .card, .box {
+            border: 0px solid black;;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+        </style>
       </head>
 
       <body>
-        <div style="margin: auto; text-align: center;">
-        <img src="/assets/W2.jpg" alt="uow" height="80px">
-        </div>
-        <div class="head" style="text-align: center; font-weight: bold; font-size: 20px;">
+
+
+
+
+      <div class="setBacgkround">
+        <!-- <div class="head" style="text-align: center; font-weight: bold; font-size: 20px;">
             WELCOME TO UOW BOOKING SYSTEM
+        </div> -->
+        <div class="">
+          <div class="containerNew" style="margin-top:50px;">
+            <table class="card">
+              <tr>
+                <td style="vertical-align: middle;">
+                  <div style="background-color:white; ">
+                    <div style="margin: auto; text-align: center; border-bottom:4px solid rgba(203, 54, 54, 0.71); margin-bottom: 1em;">
+                    <img src="/assets/W2.jpg" alt="uow" height="80px">
+                    </div>
+                  </div>
+                  <br>
+                  <div id="bigbox" style="vertical-align: middle; padding-left:20px;padding-right:20px;padding-bottom:0px;">
+
+                    <div class="box">
+                      <a href="/loginStudent">STUDENT</a>
+                    </div>
+                    <br>
+                    <div class="box">
+                      <a href="/loginStaff">STAFF</a>
+                    </div>
+
+                  </div>
+                  <br>
+                  <div class="" style="padding-bottom:10px; text-align:right; padding-right:20px; margin:10px 0px;">
+                    <div style="color: rgba(203, 54, 54, 0.71); font-weight:bold;"><a style="color: rgba(203, 54, 54, 0.71);" href="/createAccount">New User ?</a></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
-      <div>
-      <table class="card">
-        <tr>
-          <td style="vertical-align: middle; padding:40px 20px">
-            <div id="bigbox">
 
-              <div class="box">
-                <a href="/loginStudent">STUDENT</a>
-              </div>
-              <br>
-              <div class="box">
-                <a href="/loginStaff">STAFF</a>
-              </div>
 
-            </div>
-          </td>
-        </tr>
-      </table>
       </div>
     </body>
 

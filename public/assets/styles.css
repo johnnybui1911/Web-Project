@@ -212,7 +212,7 @@ a:hover {
   padding-right: 10px;
 }
 
-.styleButton:hover, .butt:hover, .buttDel:hover, .buttCancel:hover, .buttBooking:hover, .buttCode:hover, .buttCancel2:hover, #resetBtn:hover {
+.styleButton:hover, .butt:hover, .buttDel:hover, .buttCancel:hover, .buttBooking:hover, .buttCode:hover, .buttCancel2:hover, #resetBtn:hover, .buttCancel2Staff:hover, .buttBookingStaff:hover, #resetBtnAcc:hover {
   color: white;
   background-color: rgba(203, 54, 54, 0.71);
   font-weight: bold;
@@ -225,7 +225,7 @@ a:hover {
 }
 
 
-.buttBooking, .buttCancel, .buttCancel2, .butt, .buttDel, #resetBtn, .styleButton, .buttCode {
+.buttBooking, .buttCancel, .buttCancel2, .butt, .buttDel, #resetBtn, .styleButton, .buttCode, .buttCancel2Staff, .buttBookingStaff, #resetBtnAcc {
   cursor: pointer;
   margin: 5px 20px;
   width: 100px;
@@ -387,4 +387,106 @@ i {
     background-color: #f8f9fa;
     color: rgba(203, 54, 54, 0.71);
     font-weight: bold;
+}
+
+.picture {
+  /* The image used */
+    background-image: url("home1.jpg");
+
+    /* Full height */
+    height: 90%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.picture2 {
+  /* The image used */
+    background-image: url("home3.jpg");
+
+    /* Full height */
+    height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.picture3 {
+  /* The image used */
+    background-image: url("home4.jpg");
+
+    /* Full height */
+    height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.containerNew {
+  position: ;
+  /* right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px; */
+  padding-top: 0px;
+
+  left: 420;
+  /* background-color: white; */
+}
+.containerNew2 {
+
+  /* right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px; */
+  padding-top: 130px;
+  text-align: center;
+
+  /* background-color: white; */
+}
+
+.setBacgkround {
+  margin: 0px 0px;
+
+}
+
+.marginSet3 {
+  color: white;
+  font-size: 60px;
+  /* padding-top: 200px; */
+
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+
+}
+
+.marginSet4 {
+  color: white;
+  font-size: 40px;
+  /* padding-top: 200px; */
+
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+
+}
+
+
+.svg-inline--fa.fa-stack-2x {
+    color: rgba(203, 54, 54, 0.71);
+}
+
+.centerSet {
+  text-align: center;
+}
+
+.navClass:hover {
+  color: black;
+}
+
+.navClass {
+  color: rgba(0,0,0,.3);
 }

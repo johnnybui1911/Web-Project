@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $('#resetBtnAcc').click(() => {
+    document.getElementById('formUpdateAccount').reset();
+  });
+
   $('#formUpdateAccount').on('submit', function(){
 
     var fullName = $('#fullNameA');

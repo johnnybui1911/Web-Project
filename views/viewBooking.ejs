@@ -16,14 +16,19 @@
       <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
 
       <style>
-        #nav4 {
-          color: rgba(0,0,0,.3);
-        }
-        #nav5 {
-          color: rgba(0,0,0,.3);
-        }
+
         #nav6 {
           color: rgba(0,0,0,.9);
+        }
+
+        .marginSet2 {
+
+          color: white;
+          font-size: 60px;
+          /* padding-top: 200px; */
+
+          text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+          margin-left: 0px;
         }
       </style>
       </head>
@@ -32,20 +37,57 @@
         <div style="margin: auto; text-align: center;">
         <img src="/assets/W2.jpg" alt="uow" height="80px">
         </div>
-<% include partials/navBarStudent.ejs %>
+        <% if(details.type == "student") {%>
+            <% include partials/navBarStudent.ejs %>
+        <% }else{ %>
+            <% include partials/navBarStaff.ejs %>
+        <% } %>
 
+        <% if(details.type == "student") {%>
+            <div class="picture2">
+        <% }else{ %>
+            <div class="picture3">
+        <% } %>
+
+      <div class="containerNew2">
+        <h7 class="marginSet3">VIEW BOOKINGS</h7>
+
+      </div>
+    </div>
     <br>
-    <h7 class="marginSet2" style="margin-left:160px;">View Bookings</h7>
-    <br>
-    <br>
+    <div class="centerSet">
+      <div class="">
+        <span style="font-size:40px;" class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-clipboard-list fa-stack-1x fa-inverse"></i>
+          <br>
+          <br><br>
+        </span>
+        <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+          View Booking
+
+        </div>
+        <div class="" style="font-size: 15px; color: #6c757d;">
+          Check booked events and information <br>
+        </div>
+      </div>
+
+
+    </div>
+    <hr style="width: 1300px;">
     <% if(todos.length == 0) {%>
-        <div style="margin-left: 200px; font-size:small; color: #6c757d">
+        <div style="text-align: center; color: #6c757d">
           <small class="text-muted">- No bookings -</small>
         </div>
     <% } %>
 
-    <div class="row" style="margin: 0px 150px;">
+    <div class="row" style="margin-left:25%;">
       <div class="col-4">
+        <% if(todos.length != 0) {%>
+            <h style="font-size:30px; color: rgba(203, 54, 54, 0.71);">Booked Events</h>
+            <hr style="margin-top:0px;">
+        <% } %>
+
         <div class="list-group" id="list-tab" role="tablist">
           <% for(var i=0; i< todos.length; i++){ %>
             <% if(i==0){ %>
@@ -59,6 +101,11 @@
         </div>
       </div>
       <div class="col-8">
+        <% if(todos.length != 0) {%>
+            <h style="font-size:30px; color:rgba(203, 54, 54, 0.71);">Information</h>
+            <hr style="margin-top:0px; width:500; margin-right:500;">
+        <% } %>
+
         <div class="tab-content" id="nav-tabContent">
           <% for(var i=0; i< todos.length; i++){ %>
             <% if(i==0){ %>

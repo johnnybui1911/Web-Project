@@ -154,11 +154,19 @@ app.post('/changePassAccount/:user', urlencodedParser, function(req, res){
 
     }
     else {
-      foundObject.password = req.body.newPass;
-      foundObject.save(function(err, updatedObject){
-        if (err) throw err;
-        res.send("Done");
-      });
+      if(req.body.newPass!=req.body.newPass2)
+      {
+        res.send("Not");
+      }
+      else
+      {
+        foundObject.password = req.body.newPass;
+        foundObject.save(function(err, updatedObject){
+          if (err) throw err;
+          res.send("Done");
+        });
+      }
+
     }
 
 

@@ -27,11 +27,15 @@
         #nav1 {
           color: rgba(0,0,0,.9);
         }
-        #nav2 {
-          color: rgba(0,0,0,.3);
+
+
+        .card {
+          border: 0px solid black;
+          margin: 0px 0px;
         }
-        #nav3 {
-          color: rgba(0,0,0,.3);
+
+        .card-text {
+          color: #6c757d;
         }
       </style>
     </head>
@@ -42,8 +46,97 @@
       </div>
 
       <% include partials/navBarStaff.ejs %>
+      <div class="picture3">
+        <div class="containerNew2" style="padding-top: 100px;">
+          <h7 class="marginSet4" style="font-size: 40px; color: white;"  >Welcome to</h7><br>
+          <h7 class="marginSet3" >EVENT BOOKING SYSTEM</h7>
 
-      <table class="card">
+        </div>
+      </div>
+
+      <hr style="width: 1300px;">
+      <div class="card-group">
+        <div class="card">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+            <h5 class="card-title">
+              <span style="font-size:40px;" class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-wrench fa-stack-1x fa-inverse"></i>
+                <br>
+                <br><br>
+              </span>
+            </h5>
+            <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+              Create Event
+            </div>
+            <p class="card-text">Fill the required form to create new event</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+        <div class="card">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+            <h5 class="card-title">
+              <span style="font-size:40px;" class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                <br>
+                <br><br>
+              </span>
+            </h5>
+            <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+              View Event
+
+            </div>
+            <p class="card-text">Checking all events from database <br> including upcoming and past events</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+        <div class="card">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+            <h5 class="card-title">
+              <span style="font-size:40px;" class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
+                <br>
+                <br><br>
+              </span>
+            </h5>
+            <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+              Modify Event
+
+            </div>
+            <p class="card-text">View and modify selected event
+            <br> Only creator of that event can modify it
+            </p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+        <div class="card">
+          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+            <h5 class="card-title">
+              <span style="font-size:40px;" class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-clipboard-list fa-stack-1x fa-inverse"></i>
+                <br>
+                <br><br>
+              </span>
+            </h5>
+            <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+              View Booking
+
+            </div>
+            <p class="card-text">View event booking and its information</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+      </div>
+      <hr style="width: 1300px;">
+
+      <!-- <table class="card">
         <tr>
           <td style="vertical-align: middle; padding:40px 20px; text-align:center; width:500px;">
             <div id="bigbox">
@@ -59,7 +152,7 @@
             </div>
           </td>
         </tr>
-      </table>
+      </table> -->
 
 
     <!-- Optional JavaScript -->

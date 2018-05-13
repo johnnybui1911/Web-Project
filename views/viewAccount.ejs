@@ -53,11 +53,29 @@
   <% }else{ %>
       <% include partials/navBarStaff.ejs %>
   <% } %>
+  <br>
+  <div class="centerSet">
+    <div class="">
+      <span style="font-size:40px;" class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+        <br>
+        <br><br>
+      </span>
+      <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+        Account Management
+      </div>
+      <div class="" style="font-size: 15px; color: #6c757d;">
+        Detail information of user account
+      </div>
+    </div>
+    <hr style="width: 1300px;">
 
+  </div>
     <br>
     <div class="container" style="width: 500px; padding: 0px 0px; border-radius:5px; border: 2px solid rgba(203, 54, 54, 0.71);">
       <div class="card-header" style="text-align: center;">
-        <h style="font-size: 25;">View Account Details</h>
+        <h style="font-size: 25;">Account Detail</h>
       </div>
       <div class="card-body">
         <ul class="list-group list-group-flush" style="text-align: center;">
@@ -66,18 +84,21 @@
           <li class="list-group-item"><strong>Phone Number:</strong> <%= details.phoneNumber %></li>
           <li class="list-group-item"><strong>Email:</strong> <%= details.email %></li>
           <li style="text-align: center;" class="list-group-item">
-            <button type="button" class="styleButton" name="<%= user %>" style="cursor: pointer; margin: 5px 10px;width: 150px;  font-size: 18px;"><a href="/updateAccount/<%= user%>">Update Info</a></button>
+            <button type="button" class="styleButton" name="<%= user %>" style="cursor: pointer; margin-top: 20px;width: 150px;  font-size: 18px;"><a href="/updateAccount/<%= user%>">Update Info</a></button>
             <!-- <button type="button" class="styleButton" name="<%= user %>" style="cursor: pointer; margin: 5px 10px;width: 150px;  font-size: 18px;"><a href="/changePassAccount/<%= user%>">Change Password</a></button> -->
           </li>
         </ul>
       </div>
-      <div class="card-footer text-muted">
+      <div class="card-footer text-muted" style="text-align:center;">
         <% if(details.type == "student") {%>
-            <strong>Student:</strong> <%= user %>
+            <strong>STUDENT</strong>
         <% }else{ %>
-            <strong>Staff:</strong> <%= user %>
+            <strong>STAFF</strong>
         <% } %>
 
+      </div>
+      <div class="card-header" style="color: white; padding: 0px 0px; border-bottom: 0px; text-align:center;">
+        <i class="material-icons" style="font-size: 12px; padding-right:5px;">assignment_ind</i><%= user %>
       </div>
     </div>
 

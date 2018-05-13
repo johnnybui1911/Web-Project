@@ -16,16 +16,6 @@
             margin: 0 80px;
           }
 
-            #nav4 {
-              color: rgba(0,0,0,.3);
-            }
-            #nav5 {
-              color: rgba(0,0,0,.3);
-            }
-            #nav6 {
-              color: rgba(0,0,0,.3);
-            }
-
         </style>
 
       </head>
@@ -34,14 +24,54 @@
         <div style="margin: auto; text-align: center;">
         <img src="/assets/W2.jpg" alt="uow" height="80px">
         </div>
-          <% include partials/navBarStudent.ejs %>
+        <% if(details.type == "student") {%>
+            <% include partials/navBarStudent.ejs %>
+        <% }else{ %>
+            <% include partials/navBarStaff.ejs %>
+        <% } %>
+
+                <!-- <% if(details.type == "student") {%>
+                    <div class="picture2">
+                <% }else{ %>
+                    <div class="picture3">
+                <% } %>
+
+              <div class="containerNew2">
+                <h7 class="marginSet3">BOOKING PAYMENT</h7>
+
+              </div>
+            </div> -->
             <br>
-            <h7 class="marginSet2" style="margin-left:180px">Checkout</h7>
+            <div class="centerSet">
+              <div class="">
+                <span style="font-size:40px;" class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-credit-card fa-stack-1x fa-inverse"></i>
+                  <br>
+                  <br><br>
+                </span>
+                <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+                  Payment
+
+                </div>
+                <!-- <div class="" style="font-size: 15px; color: #6c757d;">
+                  Payment for booking <br>
+                </div> -->
+              </div>
+
+
+            </div>
+            <hr style="width: 1300px;">
+
             <div class="row">
               <div class="col-md-4 order-md-2 mb-4">
                 <br>
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                  <span class="text-muted">Booking Information</span>
+                  <br>
+                  <span class="text-muted">
+                    <h style="font-size:30px; color: rgba(203, 54, 54, 0.71);">Booking Information</h>
+                    <hr style="margin-top:0px; width: 420px;">
+                    </span>
                 </h4>
                 <ul class="list-group mb-3">
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -87,7 +117,11 @@
               <div class="col-md-8 order-md-1">
                 <br>
 
-                <h4 class="mb-3" style="padding-left: 93;">Payment</h4>
+                <span class="text-muted">
+                  <h style="font-size:30px; color: rgba(203, 54, 54, 0.71); padding-left: 93">Payment</h>
+                  </span>
+
+                  <hr style="margin-top:-10px; width: 690px;">
                 <form class="payment" method="POST">
 
                   <div class="row">

@@ -18,14 +18,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href = "/assets/styles.css" rel="stylesheet" type="text/css" />
   <style>
-    #nav4 {
-      color: rgba(0,0,0,.3);
-    }
+
     #nav5 {
       color: rgba(0,0,0,.9);
     }
-    #nav6 {
-      color: rgba(0,0,0,.3);
+
+
+    .marginSet2 {
+
+      color: white;
+      font-size: 60px;
+      /* padding-top: 200px; */
+
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+      margin-left: 0px;
     }
   </style>
 </head>
@@ -35,12 +41,34 @@
     <img src="/assets/W2.jpg" alt="uow" height="80px">
   </div>
   <% include partials/navBarStudent.ejs %>
+    <div class="picture2">
+      <div class="containerNew2">
+        <h7 class="marginSet3">VIEW EVENTS</h7>
+
+      </div>
+    </div>
     <br>
+    <div class="centerSet">
+      <div class="">
+        <span style="font-size:40px;" class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+          <br>
+          <br><br>
+        </span>
+        <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+          View Event
+
+        </div>
+        <div class="" style="font-size: 15px; color: #6c757d;">
+          All upcoming events <br>
+          Checking capacity of events before booking
+        </div>
+      </div>
 
 
-
-    <h7 class="marginSet2" style="margin-left: 200px;">Upcoming Events</h7>
-    <br>
+    </div>
+    <hr style="width: 1300px;">
     <% if(todos.length == 0) {%>
       <div style="margin-left: 200px; font-size:small; color: #6c757d">
         <small class="text-muted">- No upcoming events -</small>

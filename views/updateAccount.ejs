@@ -53,11 +53,31 @@
   <% }else{ %>
       <% include partials/navBarStaff.ejs %>
   <% } %>
+  <br>
+  <div class="centerSet">
+    <div class="">
+      <span style="font-size:40px;" class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
+        <br>
+        <br><br>
+      </span>
+      <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+        Account Setting
 
+      </div>
+      <div class="" style="font-size: 15px; color: #6c757d;">
+      User the form below to update account information
+      </div>
+    </div>
+    <hr style="width: 1300px;">
+
+  </div>
     <br>
 
-    <div class="background">
+    <div class="background" style="margin-left:13%;">
       <h7 class="marginSet2" style="margin-left:320px;">Update Account</h7>
+      <hr style="margin-top:0; margin-right:30%; width:650px; margin-left:320px;">
       <br>
 
       <div class="marginSet">
@@ -96,8 +116,9 @@
               </div>
             </div>
           </div>
-          <div class="ce" style="text-align: center; margin-right: 800px;">
-            <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px;width: 200px; font-size: 18px; margin-left:160px;">Update</button>
+          <div class="ce" style=" ">
+            <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px;width: 200px; font-size: 18px; ">Update</button>
+            <button type="button" id="resetBtnAcc" style="cursor: pointer; margin: 10px 0px;width: 80px;">Reset</button>
           </div>
 
         </form>

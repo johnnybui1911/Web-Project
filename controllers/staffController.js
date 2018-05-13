@@ -97,53 +97,121 @@ module.exports = function(app){
     //get data from mongodb and pass it to view
     if(req.session.logginCheck1)
     {
-      Todo.find({}).sort('-date').exec( function(err, data){
+
+      Todo.find({}).sort('-date').exec( function(err, dataFound){
         if (err) throw err;
-        if(req.query.showE=="all")
-        {
-          res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
-        }
-        else if(req.query.showE=="upcomming") {
-          var array=[];
+        var dataNew = dataFound;
+        var u = req.session.user;
+        User.findOne({username: u}, function (err, found){
+
+          for(var i=0; i<found.array.length; i++)
+          {
+
+            for(var j=0; j<dataFound.length; j++)
+            {
+
+              if(found.array[i].num == dataFound[j].num)
+              {
+
+                var obj = dataFound[j].toObject();
+                obj.check = true;
+                dataNew[j] = obj;
+                break;
+              }
+            }
+          }
+
+          var data = dataNew;
           var da = new Date();
           var dd = da.getDate();
           var mm = da.getMonth();
           var yy = 1900+da.getYear();
 
-          var d = new Date(yy, mm, dd);
-
-          for(var i=0; i<data.length; i++)
-          {
-            if(data[i].date>=d)
-            {
-              array.push(data[i]);
-            }
-          }
-          res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
-        }
-        else if(req.query.showE=="past") {
-          var array=[];
-          var da = new Date();
-          var dd = da.getDate();
-          var mm = da.getMonth();
-          var yy = 1900+da.getYear();
-
 
           var d = new Date(yy, mm, dd);
 
 
-          for(var i=0; i<data.length; i++)
+          for(var i=0; i<dataNew.length; i++)
           {
-            if(data[i].date<d)
+            if(dataNew[i].date<d)
             {
-              array.push(data[i]);
+              data[i].past = true;
             }
           }
-          res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
-        }
-        else {
-          res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
-        }
+
+
+          if(req.query.showE=="all")
+          {
+            // var dataNew = data;
+            //
+            // var array=[];
+            // var da = new Date();
+            // var dd = da.getDate();
+            // var mm = da.getMonth();
+            // var yy = 1900+da.getYear();
+            //
+            //
+            // var d = new Date(yy, mm, dd);
+            //
+            //
+            // for(var i=0; i<data.length; i++)
+            // {
+            //   if(data[i].date<d)
+            //   {
+            //     var obj = data[i].toObject();
+            //     obj.past = true;
+            //     dataNew[i] = obj;
+            //   }
+            // }
+            res.render('viewEvent', {todos: data, user: req.session.user, selectVal: req.query.showE});
+          }
+          else if(req.query.showE=="upcomming") {
+
+            var array=[];
+            var da = new Date();
+            var dd = da.getDate();
+            var mm = da.getMonth();
+            var yy = 1900+da.getYear();
+
+            var d = new Date(yy, mm, dd);
+
+            for(var i=0; i<data.length; i++)
+            {
+              if(data[i].date>=d)
+              {
+                array.push(data[i]);
+              }
+            }
+            res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+          }
+          else if(req.query.showE=="past") {
+
+            var array=[];
+            var da = new Date();
+            var dd = da.getDate();
+            var mm = da.getMonth();
+            var yy = 1900+da.getYear();
+
+
+            var d = new Date(yy, mm, dd);
+
+
+            for(var i=0; i<data.length; i++)
+            {
+              if(data[i].date<d)
+              {
+                array.push(data[i]);
+              }
+            }
+            res.render('viewEvent', {todos: array, user: req.session.user, selectVal: req.query.showE});
+          }
+          else {
+            res.render('viewEvent', {todos: data, user: req.session.user, selectVal: "all"});
+          }
+        });
+
+
+
 
       });
 
@@ -177,30 +245,119 @@ module.exports = function(app){
 
   });
 
+  app.get('/viewEvent/booking/:num', function(req, res){
+    //find data from mongodb and put new data in that via view
+    var num = req.params.num;
+    //console.log(num);
+    var user = req.session.user;
+    //console.log(req.session.user);
+    Todo.findOne({num: num}, function(err, foundObject){
+
+      if(err) throw err;
+      if(foundObject.max == 0)
+      {
+        res.json("capacity");
+      }
+      else {
+        User.findOne({username: user}, function (err, found)
+        {
+          var check = true;
+          if (err) throw err;
+          for(var i=0; i<found.array.length; i++)
+          {
+            if(found.array[i].num == num)
+            {
+              check = false;
+            }
+          }
+
+          if(!check)
+          {
+            //console.log("errpr");
+            res.json("booked");
+          }
+          else {
+            if(foundObject.price != 0)
+            {
+              //console.log('payment');
+              res.json("payment");
+            }
+            else {
+              foundObject.booked = foundObject.booked +1;
+              foundObject.max = foundObject.max -1;
+              found.array.push(foundObject);
+              foundObject.save(function(err, update){
+                if(err) throw err;
+              });
+
+              //console.log(found.array);
+              var date = new Date();
+              found.history.push({action: "Book Event " +foundObject.name, time: date});
+
+              found.save(function(err, update){
+                if(err) throw err;
+                res.json("book");
+              });
+            }
+
+          }
+
+        });
+      }
 
 
-//---------------------------------------------------------------------
-  //selectEvent
-  /*app.get('/selectEvent', function(req, res){
 
-    Todo.find({}, function(err, data){
-      if (err) throw err;
-      res.render('selectEvent', {todos: data});
+
     });
   });
 
-  app.delete('/selectEvent/:num', function(req, res){
+  app.delete('/viewEvent/booking/:n', function(req, res){
     //console.log(req.params);
-    Booking.find({num: req.params.num}).remove(function(err, data){
+    var user = req.session.user;
+    //console.log(req.session.user);
+    User.findOne({username: user}, function (err, data){
       if(err) throw err;
-      console.log('Booking has deleted');
-    });
+      var x = 0;
+      //console.log(data.array);
+      var length = data.array.length;
+      for(var i =0; i<length; i++)
+      {
+        if(data.array[i].num == req.params.n)
+        {
+          x = i;
+          break;
+        }
+      }
 
-    Todo.find({num: req.params.num.replace(/\-/g, " ")}).remove(function(err, data){
-      if(err) throw err;
-      res.json(data);
+      data.array.splice(x, 1);
+
+      var name;
+      Todo.findOne({num: req.params.n}, function(err, foundObject){
+        foundObject.booked = foundObject.booked -1;
+        foundObject.max = foundObject.max +1;
+        name = foundObject.name;
+        foundObject.save(function(err, update){
+          if(err) throw err;
+        });
+
+        var date = new Date();
+        data.history.push({action: "Cancel Booking " + name, time: date});
+        data.save(function(err, update){
+          if(err) throw err;
+          res.json(update);
+        });
+      });
+
+
+
+      //console.log(data.array);
+
+
     });
-  });*/
+  });
+
+
+
 
 //---------------------------------------------------------------------
   //adjustEvent

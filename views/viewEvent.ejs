@@ -19,12 +19,7 @@
 
 
       <style>
-        #nav1 {
-          color: rgba(0,0,0,.3);
-        }
-        #nav2 {
-          color: rgba(0,0,0,.3);
-        }
+
         #nav3 {
           color: rgba(0,0,0,.9);
         }
@@ -58,32 +53,62 @@
             </div>
           </div>
 
-          <br>
-          <h7 class="marginSet2" style="margin-left:200px">View Current Event</h7>
-          <br>
-          <form id="show" method="get" action="./viewEvent">
-            <select id="showEvent" name="showE" class="form-control form-control-sm" style="width: 180px; margin: 0px 200px;">
-              <option value="all">All events</option>
-              <% if(selectVal == "upcomming") {%>
-                <option value="upcomming" selected>Upcoming events</option>
-              <% }else{ %>
-                <option value="upcomming">Upcoming events</option>
-              <% } %>
-              <% if(selectVal == "past") {%>
-                <option value="past" selected>Past events</option>
-              <% }else{ %>
-                <option value="past">Past events</option>
-              <% } %>
-            </select>
-          </form>
+          <div class="picture3">
+            <div class="containerNew2">
+              <h7 class="marginSet3">VIEW EVENTS</h7>
 
-
+            </div>
+          </div>
           <br>
-          <% if(todos.length == 0) {%>
-              <div style="margin-left: 200px; font-size:small; color: #6c757d">
-                <small class="text-muted">- No upcomming events -</small>
+          <div class="centerSet">
+            <div class="">
+              <span style="font-size:40px;" class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                <br>
+                <br><br>
+              </span>
+              <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+                View Event
+
               </div>
-          <% } %>
+              <div class="" style="font-size: 15px; color: #6c757d;">
+                All events include past events and upcoming events.
+              </div>
+            </div>
+
+
+          </div>
+          <hr style="width: 1300px;">
+          <% if(todos.length == 0) {%>
+            <div style="text-align: center; color: #6c757d">
+              <small class="text-muted">- No upcomming events -</small>
+            </div>
+          <% }else {%>
+            <br>
+            <form id="show" method="get" action="./viewEvent">
+              <select id="showEvent" name="showE" class="form-control form-control-sm" style="width: 180px; margin: 0px 200px;">
+                <option value="all">All events</option>
+                <% if(selectVal == "upcomming") {%>
+                  <option value="upcomming" selected>Upcoming events</option>
+                <% }else{ %>
+                  <option value="upcomming">Upcoming events</option>
+                <% } %>
+                <% if(selectVal == "past") {%>
+                  <option value="past" selected>Past events</option>
+                <% }else{ %>
+                  <option value="past">Past events</option>
+                <% } %>
+              </select>
+            </form>
+
+          <% }%>
+
+
+
+
+          <br>
+
 
           <div class="container">
             <div class="row">
@@ -93,8 +118,12 @@
 
                 <div class="col-md-6 mb-3">
                   <div class="card2">
-                    <div class="card-header" style="color: white;">
-                      <%= todos[i].name %>
+                    <div class="card-header" style="color: white; text-align: center; ">
+
+                        <span><%= todos[i].name %></span>
+                        <br>
+                        <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; width: 40px; margin:0px 0px;"><i class="far fa-edit" style="font-size:20px;"></i></button>
+                        <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; width: 40px; margin:0px 0px;"><i class="far fa-trash-alt" style="font-size:20px; "></i></button>
                     </div>
                     <div class="card-body">
                       <ul class="list-group" style="border:none; text-align:left;">
@@ -110,12 +139,101 @@
                           <% } %>
 
                         </span></li>
-                        <li style="text-align: center;" class="list-group-item">
-                          <button class="butt" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Modify</button>
-                          <button class="buttDel" type="button" name="<%= todos[i].num %>" style="cursor: pointer; margin: 5px 10px;width: 100px;  font-size: 18px;">Delete</button>
-                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                        <% if(selectVal != "past") {%>
+                          <% if(selectVal == "all") {%>
+
+                              <% if(todos[i].past == true) {%>
+                                <button class="buttBookingStaff" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                              <% }else{ %>
+                                <% if(todos[i].check == true) {%>
+                                  <button class="buttCancel2Staff" type="button" name="<%= todos[i].num %>">Cancel</button>
+                                  <% }else{ %>
+
+                                    <% if(todos[i].max == 0) {%>
+                                      <button class="buttBookingStaff" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                                    <% }else{ %>
+                                      <button class="buttBookingStaff" type="button" name="<%= todos[i].num %>">Book</button>
+                                    <% } %>
+
+                                  <% } %>
+                              <% } %>
+
+
+                            </li>
+                          <% }else { %>
+                            <% if(todos[i].check == true) {%>
+                              <button class="buttCancel2Staff" type="button" name="<%= todos[i].num %>">Cancel</button>
+                              <% }else{ %>
+
+                                <% if(todos[i].max == 0) {%>
+                                  <button class="buttBookingStaff" type="button" name="<%= todos[i].num %>" disabled>Book</button>
+                                <% }else{ %>
+                                  <button class="buttBookingStaff" type="button" name="<%= todos[i].num %>">Book</button>
+                                <% } %>
+
+                              <% } %>
+
+
+                          <% } %>
+                        <% } %>
+
+
+
                       </ul>
                     </div>
+                    <% if(selectVal == "past") {%>
+                      <div class="alert alert-dark" role="alert">
+                        Past event
+                      </div>
+                    <% }else{ %>
+                      <% if(selectVal == "all") {%>
+                        <% if(todos[i].past == true) {%>
+                          <div class="alert alert-dark" role="alert">
+                            Past event
+                          </div>
+                        <% }else{ %>
+                          <% if(todos[i].max == 0) {%>
+                            <div class="alert alert-danger" role="alert">
+                              Full
+                            </div>
+                          <% }else{ %>
+                            <% if(todos[i].check == true) {%>
+                              <div class="alert alert-secondary" role="alert">
+                                Booked
+                              </div>
+                            <% }else{ %>
+                              <div class="alert alert-success" role="alert">
+                                Available
+                              </div>
+                            <% } %>
+
+
+                          <% } %>
+                        <% } %>
+                      <% }else{ %>
+                        <% if(todos[i].max == 0) {%>
+                          <div class="alert alert-danger" role="alert">
+                            Full
+                          </div>
+                        <% }else{ %>
+                          <% if(todos[i].check == true) {%>
+                            <div class="alert alert-secondary" role="alert">
+                              Booked
+                            </div>
+                          <% }else{ %>
+                            <div class="alert alert-success" role="alert">
+                              Available
+                            </div>
+                          <% } %>
+
+
+                        <% } %>
+                      <% } %>
+                    <% } %>
+
+
+
                     <div class="card-header" style="color: white; padding: 0px 0px; border-bottom: 0px">
                       <i class="material-icons" style="font-size: 12px; padding-right:5px;">assignment_ind</i><%= todos[i].creator %>
                     </div>

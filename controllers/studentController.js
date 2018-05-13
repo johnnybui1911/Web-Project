@@ -40,11 +40,14 @@ module.exports = function(app){
   app.get('/paymentBooking/:num', function(req, res){
     //get data from mongodb and pass it to view
       number = req.params.num;
-
-      if(req.session.logginCheck2)
+      var user = req.session.user;
+      if(req.session.logginCheck2||req.session.logginCheck1)
       {
         Todo.findOne({num: number}, function(err, foundObject){
-          res.render('paymentBooking', {number: number, user: req.session.user, todos: foundObject});
+          User.findOne({username: user}, function (err, data){
+            res.render('paymentBooking', {number: number, user: req.session.user, todos: foundObject, details: data});
+          });
+
         });
       }
       else {
@@ -55,7 +58,7 @@ module.exports = function(app){
 
   app.get('/paymentBooking/:check/:num', function(req, res){
     //get data from mongodb and pass it to view
-    if(req.session.logginCheck2)
+    if(req.session.logginCheck2||req.session.logginCheck1)
     {
       Todo.findOne({num: number}, function(err, foundObject){
           if(foundObject.code == req.params.check)
@@ -139,7 +142,12 @@ module.exports = function(app){
           }
 
           var array2=[];
-          var d = new Date();
+          var da = new Date();
+          var dd = da.getDate();
+          var mm = da.getMonth();
+          var yy = 1900+da.getYear();
+
+          var d = new Date(yy, mm, dd);
           for(var i=0; i<arrayCheck.length; i++)
           {
             if(arrayCheck[i].date>=d)
@@ -240,7 +248,7 @@ module.exports = function(app){
 
   //adjustEvent
   app.get('/viewBooking', function(req, res){
-    if(req.session.logginCheck2)
+    if(req.session.logginCheck2||req.session.logginCheck1)
     {
       var user = req.session.user;
       //console.log(req.session.user);
@@ -252,7 +260,7 @@ module.exports = function(app){
         return b.date - a.date;
         });
 
-        res.render('viewBooking', {todos: array, user: req.session.user});
+        res.render('viewBooking', {todos: array, user: req.session.user, details: data});
       });
     }
     else {
@@ -287,7 +295,7 @@ module.exports = function(app){
       var name;
       Todo.findOne({num: req.params.n}, function(err, foundObject){
         name = foundObject.name;
-        console.log(name);
+
         foundObject.booked = foundObject.booked -1;
         foundObject.max = foundObject.max +1;
         foundObject.save(function(err, update){

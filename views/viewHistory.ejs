@@ -53,10 +53,30 @@
   <% }else{ %>
       <% include partials/navBarStaff.ejs %>
   <% } %>
+  <br>
+  <div class="centerSet">
+    <div class="">
+      <span style="font-size:40px;" class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+        <br>
+        <br><br>
+      </span>
+      <div style="    font-size: 20px;  font-weight: bold;  color: rgba(203, 54, 54, 0.71);">
+        Account Management
+
+      </div>
+      <div class="" style="font-size: 15px; color: #6c757d;">
+        List of history activities
+      </div>
+    </div>
+    <hr style="width: 1300px;">
+
+  </div>
     <br>
     <div class="container" style="width: 500px; padding: 0px 0px; border-radius:5px; border: 2px solid rgba(203, 54, 54, 0.71);">
       <div class="card-header" style="text-align: center;">
-        <h style="font-size: 25;">View History Activities</h>
+        <h style="font-size: 25;">History Activity</h>
       </div>
       <table class="table" style="margin-bottom: 0px;">
         <thead class="thead-light">
@@ -73,7 +93,26 @@
               <th scope="row"><%= i+1 %></th>
               <td><%= activities[i].action %></td>
               <td><%= activities[i].time.toLocaleDateString("en-US") %></td>
-              <td><%= activities[i].time.getHours() + ":" + activities[i].time.getMinutes() + ":" + activities[i].time.getSeconds() %></td>
+              <td>
+
+                <% if(activities[i].time.getHours() < 10) {%>
+                    <%= "0" + activities[i].time.getHours() %>
+                <% }else{ %>
+                    <%= activities[i].time.getHours() %>
+                <% } %>:
+                <% if(activities[i].time.getMinutes() < 10) {%>
+                    <%= "0" + activities[i].time.getMinutes() %>
+                <% }else{ %>
+                    <%= activities[i].time.getMinutes() %>
+                <% } %>:
+                <% if(activities[i].time.getSeconds() < 10) {%>
+                    <%= "0" + activities[i].time.getSeconds() %>
+                <% }else{ %>
+                    <%= activities[i].time.getSeconds() %>
+                <% } %>
+
+              </td>
+              <!-- <td><%= activities[i].time.getHours() + ":" + activities[i].time.getMinutes() + ":" + activities[i].time.getSeconds() %></td> -->
             </tr>
           <% } %>
         </tbody>
