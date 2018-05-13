@@ -61,11 +61,29 @@ app.get('/createAccount', function(req, res){
 
 app.post('/createAccount', urlencodedParser, function(req, res){
   //get data from the view and add it to mongodb
-
-  var newTodo = User(req.body).save(function(err, data){
+  var user = req.body.username;
+  User.findOne({username: user}, function (err, data){
     if (err) throw err;
-    res.json(data);
+    //console.log(data.array);
+    if(!data)
+    {
+      if(req.body.password=="error")
+      {
+        res.json("incorrect");
+      }
+      else {
+        var newTodo = User(req.body).save(function(err, data){
+          if (err) throw err;
+          res.json("done");
+        });
+      }
+
+    }
+    else {
+      res.json("error");
+    }
   });
+
 
 });
 
