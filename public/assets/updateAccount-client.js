@@ -5,13 +5,13 @@ $(document).ready(function(){
 
   $('#formUpdateAccount').on('submit', function(){
 
-    var fullName = $('#fullNameA');
+    // var fullName = $('#fullNameA');
     var phoneNumber = $('#phoneNumberA');
     var emailAccount = $('#emailAccountA');
-    var studentNumber = $('#studentNumberA');
+    // var studentNumber = $('#studentNumberA');
 
 
-    var todo = {fullNameA: fullName.val(), phoneNumberA: phoneNumber.val(), emailA: emailAccount.val(), studentNumberA: studentNumber.val()};
+    var todo = {phoneNumberA: phoneNumber.val(), emailA: emailAccount.val()};
 
     $.ajax({
       type: 'POST',

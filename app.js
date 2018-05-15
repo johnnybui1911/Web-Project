@@ -131,10 +131,10 @@ app.post('/updateAccount/:user', urlencodedParser, function(req, res){
   User.findOne({username: user}, function (err, foundObject){
     if (err) throw err;
 
-    foundObject.fullName = req.body.fullNameA;
+    // foundObject.fullName = req.body.fullNameA;
     foundObject.phoneNumber = req.body.phoneNumberA;
     foundObject.email = req.body.emailAccountA;
-    foundObject.studentNumber = req.body.studentNumberA;
+    // foundObject.studentNumber = req.body.studentNumberA;
 
     foundObject.save(function(err, updatedObject){
       if (err) throw err;

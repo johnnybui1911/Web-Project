@@ -84,8 +84,10 @@
         <form method="POST" id="formUpdateAccount">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validationDefault01">Full name</label>
-              <input type="text" class="form-control" id="fullNameA" name="fullNameA"  value="<%= details.fullName %>" required>
+              <label for="validationDefault04">Email</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="emailAccountA" name="emailAccountA" value="<%= details.email %>" required>
+              </div>
             </div>
             <div class="col-md-3 mb-3">
               <label for="validationDefault03">Phone Number</label>
@@ -102,20 +104,6 @@
               </div>
             </div>
           </div> -->
-          <div class="form-row">
-            <div class="col-md-3 mb-3">
-              <label for="validationDefault04">Email</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="emailAccountA" name="emailAccountA" value="<%= details.email %>" required>
-              </div>
-            </div>
-            <div class="col-md-2 mb-3">
-              <label for="validationDefault04">Student Number</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="studentNumberA" name="studentNumberA" value="<%= details.studentNumber %>" required>
-              </div>
-            </div>
-          </div>
           <div class="ce" style=" ">
             <button type="submit" class="styleButton" style="cursor: pointer; margin: 10px 0px;width: 200px; font-size: 18px; ">Update</button>
             <button type="button" id="resetBtnAcc" style="cursor: pointer; margin: 10px 0px;width: 80px;">Reset</button>
