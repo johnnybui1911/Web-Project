@@ -3,10 +3,10 @@ $(document).ready(function(){
 
     var oldPass = $('#oldPass');
     var newPass = $('#newPass');
-    var newPass = $('#newPass2');
+    var newPass2 = $('#newPass2');
     var user = $(this).attr("name");
 
-    var todo = {oldPass: oldPass.val(), newPass: newPass.val()};
+    var todo = {oldPass: oldPass.val(), newPass: newPass.val(), newPass2: newPass2.val()};
 
     $.ajax({
       type: 'POST',
