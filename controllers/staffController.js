@@ -331,8 +331,9 @@ module.exports = function(app){
 
       data.array.splice(x, 1);
 
-      var name;
+
       Todo.findOne({num: req.params.n}, function(err, foundObject){
+        var name;
         foundObject.booked = foundObject.booked -1;
         foundObject.max = foundObject.max +1;
         name = foundObject.name;
@@ -457,9 +458,10 @@ module.exports = function(app){
 
   app.post('/adjustEvent/:num', urlencodedParser, function(req, res){
 
-    var event;
+
     Todo.findOne({num: num}, function(err, foundObject){
       if (err) throw err;
+      var event;
       event = foundObject.name;
 
 
