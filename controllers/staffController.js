@@ -421,6 +421,7 @@ module.exports = function(app){
                   key = j;
                   break;
                 }
+
               }
 
               if(key != -1)
