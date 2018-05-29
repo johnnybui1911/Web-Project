@@ -62,7 +62,7 @@ app.get('/createAccount', function(req, res){
 app.post('/createAccount', urlencodedParser, function(req, res){
   //get data from the view and add it to mongodb
   var user = req.body.username;
-  User.findOne({username: user}, function (err, data){
+  User.findOne({username: req.body.username}, function (err, data){
     if (err) throw err;
     //console.log(data.array);
     if(!data)
@@ -103,7 +103,7 @@ app.get('/viewHistory', function(req, res){
   //get data from mongodb and pass it to view
   var user = req.session.user;
   //console.log(req.session.user);
-  User.findOne({username: user}, function (err, data){
+  User.findOne({username: req.session.user}, function (err, data){
     if (err) throw err;
     //console.log(data.array);
     res.render('viewHistory', {activities: data.history, user: req.session.user, details: data});
@@ -128,7 +128,7 @@ app.get('/updateAccount/:user', function(req, res){
 app.post('/updateAccount/:user', urlencodedParser, function(req, res){
   var user = req.params.user;
 
-  User.findOne({username: user}, function (err, foundObject){
+  User.findOne({username: req.params.user}, function (err, foundObject){
     if (err) throw err;
 
     // foundObject.fullName = req.body.fullNameA;
@@ -151,7 +151,7 @@ app.get('/changePassAccount/:user', function(req, res){
   var user = req.session.user;
 
   //console.log(req.session.user);
-  User.findOne({username: user}, function (err, data){
+  User.findOne({username: req.session.user}, function (err, data){
     if (err) throw err;
     //console.log(data.array);
     res.render('changePassAccount', {details: data, user: req.session.user});

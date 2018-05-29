@@ -82,7 +82,7 @@ module.exports = function(app){
     Todo.findOne({num: number}, function(err, foundObject){
 
       if(err) throw err;
-        User.findOne({username: user}, function (err, found)
+        User.findOne({username: req.session.user}, function (err, found)
         {
 
           if (err) throw err;
@@ -173,7 +173,7 @@ module.exports = function(app){
     //console.log(num);
     var user = req.session.user;
     //console.log(req.session.user);
-    Todo.findOne({num: num}, function(err, foundObject){
+    Todo.findOne({num: req.params.num}, function(err, foundObject){
 
       if(err) throw err;
       if(foundObject.max == 0)
@@ -181,7 +181,7 @@ module.exports = function(app){
         res.json("capacity");
       }
       else {
-        User.findOne({username: user}, function (err, found)
+        User.findOne({username: req.session.user}, function (err, found)
         {
           var check = true;
           if (err) throw err;
@@ -252,7 +252,7 @@ module.exports = function(app){
     {
       var user = req.session.user;
       //console.log(req.session.user);
-      User.findOne({username: user}, function (err, data){
+      User.findOne({username: req.session.user}, function (err, data){
         if (err) throw err;
         //console.log(data.array);
         var array = data.array;
@@ -275,7 +275,7 @@ module.exports = function(app){
     //console.log(req.params);
     var user = req.session.user;
     //console.log(req.session.user);
-    User.findOne({username: user}, function (err, data){
+    User.findOne({username: req.session.user}, function (err, data){
       if(err) throw err;
       var x = 0;
       //console.log(data.array);
@@ -322,7 +322,7 @@ module.exports = function(app){
     //console.log(req.params);
     var user = req.session.user;
     //console.log(req.session.user);
-    User.findOne({username: user}, function (err, data){
+    User.findOne({username: req.session.user}, function (err, data){
       if(err) throw err;
       var x = 0;
       //console.log(data.array);

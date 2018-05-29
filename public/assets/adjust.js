@@ -41,18 +41,46 @@ $('#formAdjust').on('submit', function(){
 
     var day = picker.get();
     var date = new Date(day);
+    var d = new Date(2000,01,01);
 
-    var todo = {numA: 0, nameA: name.val(), desA: des.val(), dateA: date,
-                startA: start.val(), endA: end.val(), maxA: parseInt(max.val()), priceA: Number(price.val()),
-                addressA: address.val(), codeA: code, percentA: percent, creator: "s", booked: 0};
+    if(date == "Invalid Date")
+    {
+      var todo = {numA: 0, nameA: name.val(), desA: des.val(), dateA: d,
+                  startA: start.val(), endA: end.val(), maxA: parseInt(max.val()), priceA: Number(price.val()),
+                  addressA: address.val(), codeA: code, percentA: percent, creator: "s", booked: 0};
+    }
+    else {
+
+      var todo = {numA: 0, nameA: name.val(), desA: des.val(), dateA: date,
+                  startA: start.val(), endA: end.val(), maxA: parseInt(max.val()), priceA: Number(price.val()),
+                  addressA: address.val(), codeA: code, percentA: percent, creator: "s", booked: 0};
+    }
+
+    
 
     $.ajax({
       type: 'POST',
       url: '/adjustEvent/' + num,
       data: todo,
-      success: function(data){
+      success: function(str){
         //do something with the data via fron-end framework
-        location.href="/viewEvent";
+        if (str=="good") {
+          location.href="/viewEvent";
+        }
+        else if(str=="bad")
+        {
+          $('#exampleModalCenterModify2').modal('show');
+          $('#formCreate').get(0).reset();
+        }
+        else {
+          $('#exampleModalCenterModify').modal('show');
+          $('#formCreate').get(0).reset();
+        }
+      },
+      error: function()
+      {
+        $('#exampleModalCenterModify').modal('show');
+        $('#formCreate').get(0).reset();
       }
     });
 

@@ -75,18 +75,60 @@ module.exports = function(app){
     var user = req.session.user;
     User.findOne({username: user}, function(err, foundObject){
       if(err) throw err;
-      var date = new Date();
-      foundObject.history.push({action: "Create Event " +req.body.name, time: date});
-      foundObject.save(function(err, saveObject){
-        if(err) throw err;
-      });
+
+      if(req.body.date.substring(11, 15)=="2000")
+      {
+        res.json();
+      }
+      else {
+        var check = false;
+        var start = req.body.start;
+        var end = req.body.end;
+        var startNumHour = Number(start.substring(0, 2));
+        var endNumHour = Number(end.substring(0, 2));
+
+        var startMin = Number(start.substring(3, 5));
+        var endMin = Number(end.substring(3, 5));
+
+
+        if(startNumHour>endNumHour)
+        {
+          res.json("no");
+        }
+        else if(startNumHour==endNumHour)
+        {
+          if(startMin>endMin)
+          {
+            res.json("no");
+          }
+          else {
+            check = true;
+          }
+        }
+        else {
+          check = true;
+        }
+
+          if(check)
+          {
+            var date = new Date();
+            foundObject.history.push({action: "Create Event " +req.body.name, time: date});
+            foundObject.save(function(err, saveObject){
+              if(err) throw err;
+            });
+
+            var newTodo = Todo(req.body).save(function(err, data){
+              if (err) throw err;
+              res.json("good");
+            });
+
+          }
+
+      }
+
     });
 
-    var newTodo = Todo(req.body).save(function(err, data){
-      if (err) throw err;
-      res.json(data);
-    });
-    x++;
+
   });
 
 
@@ -460,77 +502,119 @@ module.exports = function(app){
 
 
     Todo.findOne({num: num}, function(err, foundObject){
+
       if (err) throw err;
-      var event;
-      event = foundObject.name;
+
+      if(req.body.dateA=="")
+      {
+        res.json("bad");
+      }
+      else {
+        var check = false;
+        var start = req.body.startA;
+        var end = req.body.endA;
+        var startNumHour = Number(start.substring(0, 2));
+        var endNumHour = Number(end.substring(0, 2));
+
+        var startMin = Number(start.substring(3, 5));
+        var endMin = Number(end.substring(3, 5));
 
 
-      foundObject.name = req.body.nameA;
-      foundObject.des = req.body.desA;
-      foundObject.date = req.body.dateA;
-      foundObject.start = req.body.startA;
-      foundObject.end = req.body.endA;
-      foundObject.max = req.body.maxA;
-      foundObject.price = req.body.priceA;
-      foundObject.address = req.body.addressA;
-      foundObject.code = req.body.codeA;
-      foundObject.percent = req.body.percentA;
-
-
-      User.find({}, function(err, found){
-        if(err) throw err;
-        for(var i=0; i<found.length; i++)
+        if(startNumHour>endNumHour)
         {
-          var key = -1;
-          for(var j=0; j<found[i].array.length; j++)
+          res.redirect('back');
+        }
+        else if(startNumHour==endNumHour)
+        {
+          if(startMin>endMin)
           {
-            if(found[i].array[j].num==num)
-            {
-              key = j;
-              break;
-            }
+            res.redirect('back');
           }
-
-          if(key != -1)
-          {
-            found[i].array[key].name = req.body.nameA;
-            found[i].array[key].des = req.body.desA;
-            found[i].array[key].date = req.body.dateA;
-            found[i].array[key].start = req.body.startA;
-            found[i].array[key].end = req.body.endA;
-            found[i].array[key].max = req.body.maxA;
-            found[i].array[key].price = req.body.priceA;
-            found[i].array[key].address = req.body.addressA;
-            found[i].array[key].code = req.body.codeA;
-            found[i].array[key].percent = req.body.percentA;
-
-            found[i].save(function(err, update){
-              if(err) throw err;
-            });
-            //console.log("Booking has changed");
+          else {
+            check = true;
           }
         }
+        else {
+          check = true;
+        }
 
-      });
+          if(check)
+          {
+            var event;
+            event = foundObject.name;
 
 
-      var user = req.session.user;
+            foundObject.name = req.body.nameA;
+            foundObject.des = req.body.desA;
+            foundObject.date = req.body.dateA;
+            foundObject.start = req.body.startA;
+            foundObject.end = req.body.endA;
+            foundObject.max = req.body.maxA;
+            foundObject.price = req.body.priceA;
+            foundObject.address = req.body.addressA;
+            foundObject.code = req.body.codeA;
+            foundObject.percent = req.body.percentA;
 
-      User.findOne({username: user}, function(err, userFound){
-        if(err) throw err;
-        var date = new Date();
-        userFound.history.push({action: "Update Event "+event, time: date});
 
-        userFound.save(function(err, saveObject){
-          if(err) throw err;
-        });
-      });
+            User.find({}, function(err, found){
+              if(err) throw err;
+              for(var i=0; i<found.length; i++)
+              {
+                var key = -1;
+                for(var j=0; j<found[i].array.length; j++)
+                {
+                  if(found[i].array[j].num==num)
+                  {
+                    key = j;
+                    break;
+                  }
+                }
 
-      //console.log(foundObject);
-      foundObject.save(function(err, updatedObject){
-        if (err) throw err;
-        res.redirect('/viewEvent');
-      });
+                if(key != -1)
+                {
+                  found[i].array[key].name = req.body.nameA;
+                  found[i].array[key].des = req.body.desA;
+                  found[i].array[key].date = req.body.dateA;
+                  found[i].array[key].start = req.body.startA;
+                  found[i].array[key].end = req.body.endA;
+                  found[i].array[key].max = req.body.maxA;
+                  found[i].array[key].price = req.body.priceA;
+                  found[i].array[key].address = req.body.addressA;
+                  found[i].array[key].code = req.body.codeA;
+                  found[i].array[key].percent = req.body.percentA;
+
+                  found[i].save(function(err, update){
+                    if(err) throw err;
+                  });
+                  //console.log("Booking has changed");
+                }
+              }
+
+            });
+
+
+            var user = req.session.user;
+
+            User.findOne({username: user}, function(err, userFound){
+              if(err) throw err;
+              var date = new Date();
+              userFound.history.push({action: "Update Event "+event, time: date});
+
+              userFound.save(function(err, saveObject){
+                if(err) throw err;
+              });
+            });
+
+            //console.log(foundObject);
+            foundObject.save(function(err, updatedObject){
+              if (err) throw err;
+              res.redirect('/viewEvent');
+            });
+
+          }
+
+      }
+
 
     });
 

@@ -19,7 +19,6 @@ $(document).ready(function(){
       },
       error: function(){
         $('#exampleModalCenter2').modal('show')
-        $('#formLogin').get(0).reset();
 
       }
     });
@@ -47,7 +46,6 @@ $(document).ready(function(){
       },
       error: function(){
         $('#exampleModalCenter2').modal('show')
-        $('#formLoginStudent').get(0).reset();
       }
     });
 
