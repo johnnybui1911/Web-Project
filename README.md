@@ -29,4 +29,6 @@ Built with
 * Nam Hoang Bui
 
 ## License
-Distributed under the MIT License. See LICENSE for more information.
+MIT License
+
+Copyright (c) 2018 Nam Hoang Bui
